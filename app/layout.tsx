@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import LayoutInner from "./LayoutInner";
+import CONFIG from "@/config";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Yolosopher - Portfolio",
@@ -15,14 +19,34 @@ export const metadata: Metadata = {
   manifest: "/favicon/site.webmanifest",
 };
 
-export default function RootLayout({
+const fetchSettings = async () => {
+  const res = await fetch(`${CONFIG.backend_url}/setting`, {
+    next: {
+      revalidate: 60,
+      tags: ["settings"],
+    },
+  });
+  return await res.json();
+};
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { data } = await fetchSettings();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(dmSans.className, "bg-background")}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LayoutInner settings={data}>{children}</LayoutInner>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
