@@ -5,6 +5,7 @@
 @layer base {
   :root {
     /* custom */
+    --bluish: 237 25% 35%;
     --gr: 0 0% 40%;
     --gr-foreground: 0 0% 100%;
     /* default */
@@ -32,6 +33,7 @@
 
   .dark {
     /* custom */
+    --bluish: 237 25% 35%;
     --gr: 0 0% 65%;
     --gr-foreground: 0 0% 10%;
     /* default */

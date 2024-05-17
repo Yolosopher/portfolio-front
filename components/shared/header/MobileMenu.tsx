@@ -33,7 +33,7 @@ export function MobileMenu({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent className="w-64">
+      <SheetContent className="w-52">
         <div className="mb-8"></div>
         <div className="grid gap-8 py-4">
           <Nav vertical cb={closeMenu} />

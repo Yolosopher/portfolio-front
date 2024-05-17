@@ -13,8 +13,8 @@ const LayoutInner = ({
   return (
     <>
       <Header settings={settings} />
-      <main className="pt-36">{children}</main>
-      <Footer />
+      <main className="pt-36 min-h-screen">{children}</main>
+      <Footer settings={settings} />
     </>
   );
 };

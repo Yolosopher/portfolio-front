@@ -6,16 +6,21 @@ const NavLi = ({
   name,
   path,
   cb,
+  className,
 }: {
   name: string;
   path: string;
   cb?: () => void;
+  className?: string;
 }) => {
   return (
-    <li className="text-xl capitalize">
+    <li className="capitalize">
       <Link
         {...(cb ? { onClick: cb } : {})}
-        className="transition-all dark:hover:text-white  hover:text-black"
+        className={cn(
+          "transition-all dark:hover:text-white  hover:text-black",
+          className ?? ""
+        )}
         href={path}
       >
         {name}
@@ -24,7 +29,15 @@ const NavLi = ({
   );
 };
 
-const Nav = ({ vertical, cb }: { vertical?: boolean; cb?: () => void }) => {
+const Nav = ({
+  vertical,
+  cb,
+  bluish,
+}: {
+  vertical?: boolean;
+  cb?: () => void;
+  bluish?: boolean;
+}) => {
   return (
     <nav>
       <ul
@@ -34,7 +47,12 @@ const Nav = ({ vertical, cb }: { vertical?: boolean; cb?: () => void }) => {
         )}
       >
         {navList.map((nav, index) => (
-          <NavLi key={index} {...nav} cb={cb} />
+          <NavLi
+            key={index}
+            {...nav}
+            cb={cb}
+            className={bluish ? "text-bluish dark:text-gr" : "text-gr"}
+          />
         ))}
       </ul>
     </nav>
