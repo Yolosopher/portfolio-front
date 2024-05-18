@@ -9,7 +9,6 @@ type ApiRequestParams = {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: any;
   auth?: boolean;
-  apiAuth?: boolean;
 };
 
 const useApiRequest = () => {

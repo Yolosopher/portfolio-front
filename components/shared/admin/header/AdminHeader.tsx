@@ -1,0 +1,50 @@
+"use client";
+
+import { authContext } from "@/context/authContext";
+import { useContext } from "react";
+import AdminNav from "./AdminNav";
+import { Button } from "@/components/ui/button";
+import useApiRequest from "@/hooks/request/useApiRequest";
+import { LogOut } from "lucide-react";
+
+const AdminHeader = () => {
+  const request = useApiRequest();
+  const authCtx = useContext(authContext);
+
+  const handleLogout = async () => {
+    try {
+      await request({
+        url: "/auth/logout",
+        auth: true,
+      });
+    } catch (error) {
+      // Handle error
+    } finally {
+      if (authCtx) authCtx.removeToken();
+    }
+  };
+
+  if (!authCtx?.token) {
+    return null;
+  }
+  return (
+    <div className="fixed z-20 top-0 left-0 w-full text-secondary-foreground bg-secondary">
+      <div className="container py-1.5 flex justify-between items-center">
+        <h2 className="font-bold text-lg text-prim">Admin Nav</h2>
+        <div className="flex gap-3 items-center">
+          <AdminNav />
+          <Button
+            type="button"
+            onClick={handleLogout}
+            variant={"destructive"}
+            size={"sm"}
+            className="p-0.5 h-5 rounded-none aspect-square"
+          >
+            <LogOut size={14} />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default AdminHeader;

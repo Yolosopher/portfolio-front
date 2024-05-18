@@ -2,15 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { authContext } from "@/context/authContext";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import useApiRequest from "@/hooks/request/useApiRequest";
+import { Role } from "@/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useContext, useEffect } from "react";
 
-const Page = () => {
+const AdminLogin = () => {
   const router = useRouter();
   const authCtx = useContext(authContext);
   const request = useApiRequest();
@@ -36,6 +36,12 @@ const Page = () => {
         if (!result.success) {
           errorHandler(result.error);
         } else {
+          const role = result.data.current_user.role;
+          // check if admin
+          if (role === Role.USER) {
+            errorHandler("You are not authorized to access this page");
+            return;
+          }
           authCtx?.setToken(result.data.current_user.auth_token);
         }
       }
@@ -64,4 +70,4 @@ const Page = () => {
     </div>
   );
 };
-export default Page;
+export default AdminLogin;
