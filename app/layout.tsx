@@ -3,7 +3,6 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import LayoutInner from "./LayoutInner";
-import CONFIG from "@/config";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 
