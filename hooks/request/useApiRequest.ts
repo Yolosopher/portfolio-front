@@ -9,6 +9,7 @@ type ApiRequestParams = {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: any;
   auth?: boolean;
+  apiAuth?: boolean;
 };
 
 const useApiRequest = () => {
@@ -21,6 +22,7 @@ const useApiRequest = () => {
     method,
     url,
     auth,
+    apiAuth,
   }: ApiRequestParams): Promise<
     { success: true; data: any } | { success: false; error: any } | void
   > => {
@@ -44,6 +46,8 @@ const useApiRequest = () => {
       }
       if (auth) {
         payload.headers["Authorization"] = `Bearer ${token}`;
+      } else if (apiAuth) {
+        payload.headers["Authorization"] = `Bearer ${CONFIG.img_store_key}`;
       }
 
       const res = await fetch(path, payload);
@@ -61,7 +65,7 @@ const useApiRequest = () => {
         ? await res.json()
         : await res.blob();
 
-      if (!path.includes("login") && res.status === 401) {
+      if (!path.includes("login") && !apiAuth && res.status === 401) {
         throw new Error("Unauthorized");
       }
 

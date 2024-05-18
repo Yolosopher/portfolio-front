@@ -55,7 +55,12 @@ const AdminLogin = () => {
   }, [authCtx]);
 
   return (
-    <div className="flex p-24 justify-center items-center h-[100dvh]">
+    <div
+      className="flex p-24 justify-center items-center"
+      style={{
+        height: "calc(100dvh - 9rem)",
+      }}
+    >
       <form onSubmit={handleLogin} className="flex flex-col gap-3 mx-auto">
         <h1 className="uppercase text-center font-semibold text-2xl">Login</h1>
 
