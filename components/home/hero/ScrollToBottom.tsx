@@ -5,10 +5,12 @@ import { ArrowDownToDot } from "lucide-react";
 
 const ScrollToBottom = () => {
   const handleScroll = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+    if (window) {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    }
   };
   return (
     <Button

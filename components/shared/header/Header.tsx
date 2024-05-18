@@ -15,6 +15,10 @@ const Header = ({ settings }: { settings: ISetting }) => {
             className="h-12 xl:h-[60px] object-contain w-max"
             width={246}
             height={60}
+            style={{
+              width: "auto",
+              height: "auto",
+            }}
           />
         </Link>
         <div className="flex gap-2 xl:gap-[3.125rem]  items-center text-xl font-medium">

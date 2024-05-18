@@ -18,6 +18,10 @@ const Footer = ({ settings }: { settings: ISetting }) => {
               className="h-12 xl:h-[60px] object-contain w-max hidden dark:block"
               width={246}
               height={60}
+              style={{
+                width: "auto",
+                height: "auto",
+              }}
             />
             <Image
               src="/logo.png"
@@ -25,6 +29,10 @@ const Footer = ({ settings }: { settings: ISetting }) => {
               className="h-12 xl:h-[60px] object-contain w-max dark:hidden"
               width={246}
               height={60}
+              style={{
+                width: "auto",
+                height: "auto",
+              }}
             />
           </Link>
           <div className="flex flex-col gap-3 xl:gap-12 text-bluish xl:items-center xl:flex-row">

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import LayoutInner from "./LayoutInner";
 import CONFIG from "@/config";
 import { cn } from "@/lib/utils";
+import { fetchSettings } from "@/actions/settings";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -20,16 +21,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon/apple-touch-icon.png",
   },
   manifest: "/favicon/site.webmanifest",
-};
-
-export const fetchSettings = async () => {
-  const res = await fetch(`${CONFIG.backend_url}/setting`, {
-    next: {
-      revalidate: 60,
-      tags: ["settings"],
-    },
-  });
-  return await res.json();
 };
 
 export default async function RootLayout({

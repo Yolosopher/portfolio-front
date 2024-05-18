@@ -9,7 +9,6 @@ const LayoutInner = ({
   settings: ISetting;
   children: React.ReactNode;
 }>) => {
-  console.log(settings);
   return (
     <>
       <Header settings={settings} />
