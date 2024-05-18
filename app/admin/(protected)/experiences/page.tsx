@@ -1,8 +1,8 @@
-const AdminDashboard = () => {
+const AdminExperiences = () => {
   return (
     <div className="container">
       <div className="relative mt-6 flex justify-center items-center mb-4">
-        <h1 className="text-4xl font-bold text-center">Admin Dashboard</h1>
+        <h1 className="text-4xl font-bold text-center">Experiences</h1>
         {/* <div className="flex w-max absolute top-1/2 right-0 -translate-y-1/2">
            
         </div> */}
@@ -10,4 +10,4 @@ const AdminDashboard = () => {
     </div>
   );
 };
-export default AdminDashboard;
+export default AdminExperiences;
