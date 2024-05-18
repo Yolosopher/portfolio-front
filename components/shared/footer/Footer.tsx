@@ -15,7 +15,14 @@ const Footer = ({ settings }: { settings: ISetting }) => {
             <Image
               src="/logo_grey.png"
               alt="Logo"
-              className="h-12 xl:h-[60px] object-contain w-max invert dark:invert-0"
+              className="h-12 xl:h-[60px] object-contain w-max hidden dark:block"
+              width={246}
+              height={60}
+            />
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              className="h-12 xl:h-[60px] object-contain w-max dark:hidden"
               width={246}
               height={60}
             />
@@ -34,7 +41,7 @@ const Footer = ({ settings }: { settings: ISetting }) => {
         </div>
         {/* separator */}
         <Separator />
-        {/* bottom */}{" "}
+        {/* bottom */}
         <div className="flex items-center gap-2 justify-center xl:justify-between">
           <div className="hidden xl:flex text-lg font-normal">
             <Nav bluish />

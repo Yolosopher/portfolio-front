@@ -6,7 +6,7 @@ import NavRenderer from "./NavRenderer";
 
 const Header = ({ settings }: { settings: ISetting }) => {
   return (
-    <header className="h-36 py-10 fixed top-0 left-0 w-full bg-background">
+    <header className="h-36 py-10 fixed z-10 top-0 left-0 w-full bg-background">
       <div className="container flex items-center justify-between">
         <Link href="/">
           <Image
