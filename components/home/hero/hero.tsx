@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ISetting } from "@/models/setting";
 import Image from "next/image";
-import ScrollToBottom from "./ScrollToBottom";
 import { poppins } from "@/lib/fonts";
 
 const Hero = ({ settings }: { settings: ISetting }) => {
@@ -31,10 +30,6 @@ const Hero = ({ settings }: { settings: ISetting }) => {
           />
         </div>
       </article>
-      <div className="flex flex-col justify-center items-center gap-2 sm:absolute bottom-4 text-primary font-bold left-1/2 sm:-translate-x-1/2 pb-6">
-        <span className="text-base">Scroll Down</span>
-        <ScrollToBottom />
-      </div>
     </div>
   );
 };

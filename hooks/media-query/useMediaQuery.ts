@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 
 type MediaQueryProps = number;
 
-const useMediaQuery = (resolution: MediaQueryProps, max: boolean = false) => {
+const useMediaQuery = (
+  resolution: MediaQueryProps,
+  max: boolean = false,
+  height: boolean = false
+) => {
   const [matches, setMatches] = useState<boolean>(false);
   useEffect(() => {
     setMatches(
-      window.matchMedia(`(${max ? "max" : "min"}-width: ${resolution}px)`)
-        .matches
+      window.matchMedia(
+        `(${max ? "max" : "min"}-${
+          height ? "height" : "width"
+        }: ${resolution}px)`
+      ).matches
     );
   }, []);
   useEffect(() => {

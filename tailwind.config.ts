@@ -17,10 +17,10 @@ const config = {
         "2xl": "1400px",
       },
     },
-    transitionDuration: {
-      "1200": "1200ms",
-    },
     extend: {
+      transitionDuration: {
+        "1200": "1200ms",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

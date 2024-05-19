@@ -11,12 +11,14 @@ const SectionTitle = ({ title, description }: SectionTiTleProps) => {
     <div
       className={
         (poppins.className,
-        "text-gr flex flex-col items-center gap-[15px] mb-32")
+        "text-gr flex flex-col sm:items-center gap-1 sm:gap-[15px] mb-12 sm:mb-24")
       }
     >
-      <h2 className="font-bold text-5xl">{title}</h2>
+      <h2 className="font-bold text-3xl sm:text-5xl">{title}</h2>
       {description && (
-        <p className={cn(poppins.className, "text-2xl")}>{description}</p>
+        <p className={cn(poppins.className, "text-lg sm:text-2xl")}>
+          {description}
+        </p>
       )}
     </div>
   );
