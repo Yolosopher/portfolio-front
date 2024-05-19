@@ -49,7 +49,10 @@ const HomeTechStack = ({
           title="Tech Stack"
           description="Technologies I've been working with recently"
         />
-        <div className="flex w-full min-h-[340px] overflow-visible" ref={ref}>
+        <div
+          className="flex justify-end w-full min-h-[340px] overflow-visible"
+          ref={ref}
+        >
           <TechContent techs={techs} active={inView} sizeInfo={sizeInfo} />
         </div>
       </section>
