@@ -12,7 +12,7 @@ const ScrollToBottom = () => {
   const handleScroll = () => {
     if (window) {
       window.scrollBy({
-        top: window.innerHeight,
+        top: window.innerHeight - 144,
         behavior: "smooth",
       });
     }

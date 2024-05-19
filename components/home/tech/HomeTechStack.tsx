@@ -44,7 +44,7 @@ const HomeTechStack = ({
 
   return (
     <div className="overflow-hidden">
-      <section className="container py-44 ">
+      <section className="container pt-8 pb-44">
         <SectionTitle
           title="Tech Stack"
           description="Technologies I've been working with recently"
