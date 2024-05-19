@@ -1,15 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import UploadInput from "../input/UploadInput";
-import useParseError from "@/hooks/parse-error/useParseError";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import useApiRequest from "@/hooks/request/useApiRequest";
 import CONFIG from "@/config";
 import { toast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
-import RenderPayloadImage from "./RenderPayloadImage";
-import { Button } from "@/components/ui/button";
-import { Loader } from "lucide-react";
 
 type ImageUploadProps = {
   imgLoading: boolean;

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import AdminInput from "../input/AdminInput";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { LEVEL } from "@/models/tech";
+import { ITechStack, LEVEL } from "@/models/tech";
 import RangeInput from "../../shared/input/RangeInput";
 import useApiRequest from "@/hooks/request/useApiRequest";
 import { Loader } from "lucide-react";
@@ -14,15 +14,21 @@ import ImageStore from "../image-store/ImageStore";
 import RenderImage from "@/components/shared/image/RenderImage";
 
 type TechFormProps = {
-  edit?: boolean;
+  techData: ITechStack | null;
+  refetch: () => void | Promise<void>;
   closeDialog: () => void;
 };
 
-const TechForm = ({ edit, closeDialog }: TechFormProps) => {
-  const [choosenImageName, setChoosenImageName] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [level, setLevel] = useState<LEVEL>(5);
+const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
+  const id = useMemo(() => techData?._id, [techData]);
+  const [choosenImageName, setChoosenImageName] = useState<string>(
+    techData?.icon || ""
+  );
+  const [name, setName] = useState<string>(techData?.name || "");
+  const [description, setDescription] = useState<string>(
+    techData?.description || ""
+  );
+  const [level, setLevel] = useState<LEVEL>(techData?.level || 5);
   const [loading, setLoading] = useState<boolean>(false);
 
   const request = useApiRequest();
@@ -46,8 +52,8 @@ const TechForm = ({ edit, closeDialog }: TechFormProps) => {
       };
 
       const result = await request({
-        url: "/tech",
-        method: "POST",
+        url: id ? `/tech/${id}` : "/tech",
+        method: id ? "PUT" : "POST",
         body: payload,
         auth: true,
       });
@@ -60,7 +66,10 @@ const TechForm = ({ edit, closeDialog }: TechFormProps) => {
             title: "Success",
             description: result.data.message ?? "Tech added successfully",
           });
-          closeDialog();
+          refetch();
+          if (!id) {
+            closeDialog();
+          }
         }
       }
     } catch (error: any) {
@@ -119,7 +128,9 @@ const TechForm = ({ edit, closeDialog }: TechFormProps) => {
         className="max-w-[180px] w-full mx-auto"
       >
         {loading && <Loader size={16} className="animate animate-spin" />}
-        {loading ? "Adding..." : "Add"}
+        {loading
+          ? `${id ? "Updating..." : "Adding..."}`
+          : `${id ? "Update" : "Add"}`}
       </Button>
     </form>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { authContext } from "@/context/authContext";
@@ -13,7 +14,7 @@ const AdminProtectedLayout = ({
   const authCtx = useContext(authContext);
 
   useEffect(() => {
-    if (!authCtx?.token) {
+    if (authCtx && !authCtx.authLoading && !authCtx?.token) {
       router.push("/admin/login");
     }
   }, [authCtx]);

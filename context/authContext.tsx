@@ -5,12 +5,14 @@ type AuthContextType = {
   token: string;
   setToken: (token: string) => void;
   removeToken: () => void;
+  authLoading: boolean;
 };
 const authContext = createContext<AuthContextType | null>(null);
 
 const AuthProvider = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
+  const [authLoading, setAuthLoading] = useState<boolean>(true);
   const [authToken, setAuthToken] = useState<string>("");
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const AuthProvider = ({
     if (token) {
       setAuthToken(token ?? "");
     }
+    setAuthLoading(false);
   }, []);
 
   const setToken = (token: string) => {
@@ -31,7 +34,12 @@ const AuthProvider = ({
   };
   return (
     <authContext.Provider
-      value={{ token: authToken ?? "", setToken, removeToken }}
+      value={{
+        token: authToken ?? "",
+        setToken,
+        removeToken,
+        authLoading,
+      }}
     >
       {children}
     </authContext.Provider>

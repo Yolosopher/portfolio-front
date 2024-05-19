@@ -6,7 +6,6 @@ const AdminEducations = () => {
         {/* <div className="flex w-max absolute top-1/2 right-0 -translate-y-1/2">
            
         </div> */}
-        <h2>hgi</h2>
       </div>
     </div>
   );

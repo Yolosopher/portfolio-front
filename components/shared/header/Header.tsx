@@ -11,6 +11,7 @@ const Header = ({ settings }: { settings: ISetting }) => {
         <Link href="/">
           <Image
             src="/logo.png"
+            priority
             alt="Logo"
             className="h-12 xl:h-[60px] object-contain w-max"
             width={246}

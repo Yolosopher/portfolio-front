@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Yolosopher - Portfolio",
   description: "Portfolio website for Yolosopher",
   icons: {
-    icon: "/favicon/favicon.ico",
+    icon: "/favicon.ico",
     apple: "/favicon/apple-touch-icon.png",
     shortcut: "/favicon/apple-touch-icon.png",
   },

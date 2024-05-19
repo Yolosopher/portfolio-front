@@ -29,6 +29,7 @@ const Footer = ({ settings }: { settings: ISetting }) => {
               className="h-12 xl:h-[60px] object-contain w-max dark:hidden"
               width={246}
               height={60}
+              priority
               style={{
                 width: "auto",
                 height: "auto",
