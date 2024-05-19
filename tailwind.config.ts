@@ -17,6 +17,9 @@ const config = {
         "2xl": "1400px",
       },
     },
+    transitionDuration: {
+      "1200": "1200ms",
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

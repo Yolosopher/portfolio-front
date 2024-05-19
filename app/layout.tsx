@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import { dmSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Yolosopher - Portfolio",

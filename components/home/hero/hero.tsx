@@ -1,14 +1,8 @@
 import { cn } from "@/lib/utils";
 import { ISetting } from "@/models/setting";
-import { Poppins } from "next/font/google";
 import Image from "next/image";
 import ScrollToBottom from "./ScrollToBottom";
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  style: "normal",
-  subsets: ["latin"],
-});
+import { poppins } from "@/lib/fonts";
 
 const Hero = ({ settings }: { settings: ISetting }) => {
   return (
