@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import AdminInput from "../input/AdminInput";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ITechStack, LEVEL } from "@/models/tech";
+import { ITechStack, LEVEL, PRIORITY } from "@/models/tech";
 import RangeInput from "../../shared/input/RangeInput";
 import useApiRequest from "@/hooks/request/useApiRequest";
 import { Loader } from "lucide-react";
@@ -29,6 +29,7 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
     techData?.description || ""
   );
   const [level, setLevel] = useState<LEVEL>(techData?.level || 5);
+  const [priority, setPriority] = useState<LEVEL>(techData?.priority || 3);
   const [loading, setLoading] = useState<boolean>(false);
 
   const request = useApiRequest();
@@ -48,6 +49,7 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
         name,
         description,
         level,
+        priority,
         icon: choosenImageName,
       };
 
@@ -104,6 +106,16 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
           max={10}
           step={1}
           setChange={(val: number) => setLevel(val as LEVEL)}
+          className="w-full"
+        />
+        <RangeInput
+          disabled={loading}
+          label="Priority"
+          value={priority}
+          min={1}
+          max={5}
+          step={1}
+          setChange={(val: number) => setPriority(val as PRIORITY)}
           className="w-full"
         />
         <div className="flex gap-3 items-center">

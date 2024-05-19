@@ -1,3 +1,4 @@
+import LinkToAdmin from "@/components/admin-link/LinkToAdmin";
 import Footer from "@/components/shared/footer/Footer";
 import Header from "@/components/shared/header/Header";
 import { BottomScrollProvider } from "@/context/bottomScrollContext";
@@ -15,6 +16,7 @@ const LayoutInner = ({
       <Header settings={settings} />
       <main className="pt-36 min-h-screen">{children}</main>
       <Footer settings={settings} />
+      <LinkToAdmin />
     </BottomScrollProvider>
   );
 };

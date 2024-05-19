@@ -7,66 +7,68 @@ import Nav from "../header/Nav";
 
 const Footer = ({ settings }: { settings: ISetting }) => {
   return (
-    <footer className="bg-background py-2">
-      <div className="container flex flex-col gap-6 xl:gap-10">
-        {/* top */}
-        <div className="flex flex-col text-center xl:text-left items-center gap-6 xl:gap-2 xl:justify-between xl:flex-row">
-          <Link href="/">
-            <Image
-              src="/logo_grey.png"
-              alt="Logo"
-              className="h-12 xl:h-[60px] object-contain w-max hidden dark:block"
-              width={246}
-              height={60}
-              style={{
-                width: "auto",
-                height: "auto",
-              }}
-            />
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              className="h-12 xl:h-[60px] object-contain w-max dark:hidden"
-              width={246}
-              height={60}
-              priority
-              style={{
-                width: "auto",
-                height: "auto",
-              }}
-            />
-          </Link>
-          <div className="flex flex-col gap-3 xl:gap-12 text-bluish xl:items-center xl:flex-row">
-            <a className="dark:text-gr" href={`tel:+${settings.phone}`}>
-              +{settings.phone}
-            </a>
-            <a className="dark:text-gr" href={`mailto:${settings.email}`}>
-              {settings.email}
-            </a>
-            <div className="flex justify-center">
-              <Socials settings={settings} bluish />
+    <>
+      <footer className="bg-background py-2">
+        <div className="container flex flex-col gap-6 xl:gap-10">
+          {/* top */}
+          <div className="flex flex-col text-center xl:text-left items-center gap-6 xl:gap-2 xl:justify-between xl:flex-row">
+            <Link href="/">
+              <Image
+                src="/logo_grey.png"
+                alt="Logo"
+                className="h-12 xl:h-[60px] object-contain w-max hidden dark:block"
+                width={246}
+                height={60}
+                style={{
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                className="h-12 xl:h-[60px] object-contain w-max dark:hidden"
+                width={246}
+                height={60}
+                priority
+                style={{
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
+            </Link>
+            <div className="flex flex-col gap-3 xl:gap-12 text-bluish xl:items-center xl:flex-row">
+              <a className="dark:text-gr" href={`tel:+${settings.phone}`}>
+                +{settings.phone}
+              </a>
+              <a className="dark:text-gr" href={`mailto:${settings.email}`}>
+                {settings.email}
+              </a>
+              <div className="flex justify-center">
+                <Socials settings={settings} bluish />
+              </div>
             </div>
           </div>
-        </div>
-        {/* separator */}
-        <Separator />
-        {/* bottom */}
-        <div className="flex items-center gap-2 justify-center xl:justify-between">
-          <div className="hidden xl:flex text-lg font-normal">
-            <Nav bluish />
+          {/* separator */}
+          <Separator />
+          {/* bottom */}
+          <div className="flex items-center gap-2 justify-center xl:justify-between">
+            <div className="hidden xl:flex text-lg font-normal">
+              <Nav bluish />
+            </div>
+            <div className="text-center xl:text-right text-lg font-medium">
+              Copyright © 2024{" "}
+              <span className="text-bluish dark:text-primary font-bold">
+                Yolosopher
+              </span>
+              . All rights reserved.
+            </div>
           </div>
-          <div className="text-center xl:text-right text-lg font-medium">
-            Copyright © 2024{" "}
-            <span className="text-bluish dark:text-primary font-bold">
-              Yolosopher
-            </span>
-            . All rights reserved.
-          </div>
+          {/* space */}
+          <div className="h-2 xl:h-4"></div>
         </div>
-        {/* space */}
-        <div className="h-2 xl:h-4"></div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 export default Footer;

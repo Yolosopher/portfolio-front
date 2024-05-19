@@ -24,6 +24,10 @@ const techHeads = [
     value: "level",
   },
   {
+    label: "Priority",
+    value: "priority",
+  },
+  {
     label: "Description",
     value: "description",
   },

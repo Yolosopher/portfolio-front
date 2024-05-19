@@ -15,7 +15,7 @@ const TechContent = ({ techs, active, sizeInfo }: TechContentProps) => {
     <ul
       className={cn(
         "grid w-full gap-12 xl:gap-[6.25rem] justify-center justify-items-center  transition duration-700 ease-in",
-        `grid-cols-${sizeInfo.cols}`,
+        `grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5`,
         active
           ? "translate-x-0 opacity-100 scale-100"
           : "translate-x-[200px] opacity-70 scale-80"
