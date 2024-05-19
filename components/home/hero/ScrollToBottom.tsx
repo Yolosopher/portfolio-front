@@ -18,6 +18,7 @@ const ScrollToBottom = () => {
       variant={"default"}
       size={"icon"}
       onClick={handleScroll}
+      aria-label="Scroll to bottom"
     >
       <ArrowDownToDot className="flex-shrink-0" />
     </Button>

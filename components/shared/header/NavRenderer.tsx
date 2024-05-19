@@ -20,7 +20,12 @@ const NavRenderer = ({ settings }: { settings: ISetting }) => {
         <MobileMenu
           settings={settings}
           trigger={
-            <Button type="button" variant="outline" size="icon">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              aria-label="Open the menu"
+            >
               <PiHamburgerBold className="text-[1.5rem] " />
             </Button>
           }
