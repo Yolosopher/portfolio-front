@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const NavLi = ({ name, path }: { name: string; path: string }) => {
   return (
-    <li className="capitalize">
+    <li>
       <Link href={path}>{name}</Link>
     </li>
   );
@@ -11,8 +11,8 @@ const NavLi = ({ name, path }: { name: string; path: string }) => {
 
 const AdminNav = () => {
   return (
-    <nav>
-      <ul className="flex gap-4 justify-center">
+    <nav className="flex w-1 md:w-full flex-1">
+      <ul className="flex gap-4 md:justify-center whitespace-nowrap capitalize w-full overflow-x-auto py-1">
         {navListAdmin.map((nav, index) => (
           <NavLi {...nav} key={index} />
         ))}
