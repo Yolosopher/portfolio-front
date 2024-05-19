@@ -12,6 +12,7 @@ import {
 import { PenLine, Trash } from "lucide-react";
 import { useMemo } from "react";
 import { Confirm } from "../confirm/Confirm";
+import { cn } from "@/lib/utils";
 
 type ActionType = "edit" | "delete";
 
@@ -67,13 +68,19 @@ const RenderTable = <T,>({
           <TableRow key={index}>
             {heads.map(({ value }, i) => {
               const val = (row as any)[value];
+              const description = (row as any)["description"];
+              const invertOnDark =
+                description && description.includes("invert");
               const content =
                 imageKey && value === imageKey ? (
                   <RenderImage
                     name={val}
                     width={80}
                     height={80}
-                    className="w-20 h-20"
+                    className={cn(
+                      "w-20 h-20",
+                      invertOnDark ? "dark:filter dark:invert" : ""
+                    )}
                   />
                 ) : (
                   val
