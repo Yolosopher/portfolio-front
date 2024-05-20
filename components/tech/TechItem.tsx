@@ -1,5 +1,4 @@
 import { ITechStack } from "@/models/tech";
-import Image from "next/image";
 import RenderImage from "../shared/image/RenderImage";
 import { cn } from "@/lib/utils";
 
