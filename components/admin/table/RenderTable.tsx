@@ -23,12 +23,14 @@ interface RenderTableProps<T> {
   }[];
   actions?: Map<ActionType, (id: string) => void | Promise<void>>;
   rows: T[];
-  imageKey?: string;
+  imageKeys?: string | string[];
+  links?: string[];
   name?: string;
 }
 
 const RenderTable = <T,>({
-  imageKey,
+  imageKeys,
+  links,
   actions,
   heads,
   rows,
@@ -71,20 +73,64 @@ const RenderTable = <T,>({
               const description = (row as any)["description"];
               const invertOnDark =
                 description && description.includes("invert");
-              const content =
-                imageKey && value === imageKey ? (
+              let content: any = null;
+
+              if (value === "stack") {
+                content = val.split(", ").map((v: string, i: number) => (
+                  <span key={i} className="block text-xs">
+                    {v}
+                  </span>
+                ));
+              } else if (value === "_id") {
+                content = (
+                  <div title={val}>
+                    {val.length > 10 ? `${val.slice(0, 10)}...` : val}
+                  </div>
+                );
+              } else if (value === "description") {
+                content = (
+                  <div title={val} className="text-xs line-clamp-5 max-w-xs">
+                    {val}
+                  </div>
+                );
+              } else if (value === "github") {
+                if (val.includes(", ")) {
+                  content = val.split(", ").map((v: string, i: number) => (
+                    <a
+                      key={i}
+                      title={v}
+                      href={v}
+                      target="_blank"
+                      className="block"
+                    >
+                      {v.length > 20 ? `${v.slice(19)}...` : v}
+                    </a>
+                  ));
+                }
+              } else if (imageKeys && imageKeys.includes(value)) {
+                content = val ? (
                   <RenderImage
                     name={val}
                     width={80}
                     height={80}
+                    viewer
+                    invertOnDark={invertOnDark}
                     className={cn(
-                      "w-20 h-20",
-                      invertOnDark ? "dark:filter dark:invert" : ""
+                      "w-20 h-20 min-w-20 min-h-20 object-contain flex-shrink-0"
                     )}
                   />
                 ) : (
-                  val
+                  "No Image"
                 );
+              } else if (links && links.includes(value)) {
+                content = (
+                  <a title={val} href={val} target="_blank">
+                    {val.length > 20 ? `${val.slice(0, 20)}...` : val}
+                  </a>
+                );
+              } else {
+                content = val;
+              }
               return (
                 <TableCell
                   className={

@@ -6,13 +6,33 @@ import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
 
-export const metadata: Metadata = {
+const fullName = "Nika Nishnianidze (Yolosopher)";
+const md = {
   title: "Yolosopher - Portfolio",
-  description: "Portfolio website for Yolosopher",
+  description: `Portfolio website for ${fullName}`,
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon/apple-touch-icon.png",
     shortcut: "/favicon/apple-touch-icon.png",
+  },
+  applicationName: "yolosopher.online",
+  creator: fullName,
+};
+export const metadata: Metadata = {
+  title: md.title,
+  description: md.description,
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/apple-touch-icon.png",
+  },
+  applicationName: "yolosopher.online",
+  creator: fullName,
+  metadataBase: new URL("https://yolosopher.online"),
+  openGraph: {
+    title: md.title,
+    description: md.description,
+    images: "/preview.png",
   },
   manifest: "/favicon/site.webmanifest",
 };

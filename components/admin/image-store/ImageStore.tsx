@@ -11,6 +11,7 @@ import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import { IImage } from "@/models/image";
 import Images from "./Images";
 import CONFIG from "@/config";
+import RenderImage from "@/components/shared/image/RenderImage";
 
 type ImageStoreProps = {
   choosenImageName: string;
@@ -51,32 +52,46 @@ const ImageStore = ({
   }, []);
 
   return (
-    <DialogRenderer
-      open={open}
-      setOpen={setOpen}
-      scroll
-      trigger={
-        <Button type="button" className="w-max flex items-center  gap-2">
-          <span>Image Picker</span>
-          <ImagePlus />
-        </Button>
-      }
-      content={
-        <DialogContentRenderer
-          centeredHeader
-          title="Image Picker"
-          description="Choose or upload new image"
-          content={
-            <Images
-              images={images}
-              choosenImageName={choosenImageName}
-              chooseName={chooseName}
-              refetch={fetchImages}
-            />
-          }
-        />
-      }
-    />
+    <>
+      <DialogRenderer
+        open={open}
+        setOpen={setOpen}
+        scroll
+        trigger={
+          <Button
+            type="button"
+            className="flex items-center gap-2 overflow-hidden"
+          >
+            Image Picker
+            <ImagePlus />
+          </Button>
+        }
+        content={
+          <DialogContentRenderer
+            centeredHeader
+            title="Image Picker"
+            description="Choose or upload new image"
+            content={
+              <Images
+                images={images}
+                choosenImageName={choosenImageName}
+                chooseName={chooseName}
+                refetch={fetchImages}
+              />
+            }
+          />
+        }
+      />
+
+      {choosenImageName ? (
+        <>
+          <RenderImage
+            name={choosenImageName}
+            className="w-1/2 border-4 border-primary rounded-md object-cover "
+          />
+        </>
+      ) : null}
+    </>
   );
 };
 export default ImageStore;

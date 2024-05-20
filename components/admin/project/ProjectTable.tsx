@@ -2,11 +2,12 @@
 import useApiRequest from "@/hooks/request/useApiRequest";
 import RenderTable from "../table/RenderTable";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
-import { ITechStack } from "@/models/tech";
+import { IProject } from "@/models/project";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
+import { ITechStack } from "@/models/tech";
 
-const techHeads = [
+const projectHeads = [
   {
     label: "ID",
     value: "_id",
@@ -16,37 +17,43 @@ const techHeads = [
     value: "name",
   },
   {
-    label: "Icon",
-    value: "icon",
+    label: "Image",
+    value: "image",
   },
   {
-    label: "Level",
-    value: "level",
+    label: "Github links",
+    value: "github",
   },
   {
-    label: "Priority",
-    value: "priority",
+    label: "Preview",
+    value: "preview",
+  },
+  {
+    label: "Stack",
+    value: "stack",
   },
   {
     label: "Description",
     value: "description",
   },
 ];
-const TechTable = ({
-  techs,
+const ProjectTable = ({
+  projects,
   refetch,
+  techs,
 }: {
-  techs: ITechStack[];
+  projects: IProject[];
+  techs: string[];
   refetch: () => Promise<void>;
 }) => {
   const router = useRouter();
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
 
-  const deleteTech = async (id: string) => {
+  const deleteProject = async (id: string) => {
     try {
       const result = await request({
-        url: `/tech/${id}`,
+        url: `/project/${id}`,
         method: "DELETE",
         auth: true,
       });
@@ -58,7 +65,7 @@ const TechTable = ({
           // success response
           toast({
             title: "Success",
-            description: result.data.message ?? "Tech deleted successfully",
+            description: result.data.message ?? "Project deleted successfully",
           });
           refetch();
         }
@@ -70,23 +77,29 @@ const TechTable = ({
 
   return (
     <RenderTable
-      heads={techHeads}
-      rows={techs}
-      imageKeys="icon"
+      heads={projectHeads}
+      rows={projects.map((project: IProject) => {
+        return {
+          ...project,
+          stack: project.stack.map((_: ITechStack) => _.name).join(", "),
+        };
+      })}
+      imageKeys={["image"]}
+      links={["github", "preview"]}
       actions={
         new Map([
           [
             "edit",
             (id) =>
-              router.push(`/admin/tech/edit/${id}`, {
+              router.push(`/admin/projects/edit/${id}`, {
                 scroll: true,
               }),
           ],
-          ["delete", (id) => deleteTech(id)],
+          ["delete", (id) => deleteProject(id)],
         ])
       }
     />
   );
 };
 
-export default TechTable;
+export default ProjectTable;

@@ -4,16 +4,19 @@ import { useEffect, useState } from "react";
 import { DialogRenderer } from "../dialog/DialogRenderer";
 import { Button } from "@/components/ui/button";
 import DialogContentRenderer from "../dialog/DialogContentRenderer";
-import TechForm from "./TechForm";
-import { ITechStack } from "@/models/tech";
+import ProjectForm from "./ProjectForm";
 import useApiRequest from "@/hooks/request/useApiRequest";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import { useRouter } from "next/navigation";
+import { IProject } from "@/models/project";
+import { ITechStack } from "@/models/tech";
 
-const TechFormRenderer = ({
+const ProjectFormRenderer = ({
   id,
   refetchList,
+  techs,
 }: {
+  techs: ITechStack[];
   id?: string;
   refetchList: () => Promise<void>;
 }) => {
@@ -21,19 +24,19 @@ const TechFormRenderer = ({
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
   const [open, setOpen] = useState<boolean>(!!id || false);
-  const [techData, setTechData] = useState<ITechStack | null>(null);
+  const [projectData, setProjectData] = useState<IProject | null>(null);
   const [isClient, setIsClient] = useState<boolean>(false);
 
-  const fetchTechData = async () => {
+  const fetchProjectData = async () => {
     try {
-      const result = await request({ url: `/tech/${id}` });
+      const result = await request({ url: `/project/${id}` });
 
       if (result) {
         if (!result.success) {
           errorHandler(result.error);
         } else {
           // success response
-          setTechData(result.data.data);
+          setProjectData(result.data.data);
         }
       }
     } catch (error: any) {
@@ -47,42 +50,43 @@ const TechFormRenderer = ({
 
   useEffect(() => {
     if (id) {
-      // fetch tech data
-      fetchTechData();
+      // fetch project data
+      fetchProjectData();
     }
   }, [id]);
 
   useEffect(() => {
     if (id && !open) {
-      router.push("/admin/tech");
+      router.push("/admin/projects");
     }
   }, [id, open]);
 
   const refetch = async () => {
     if (id) {
-      await fetchTechData();
+      await fetchProjectData();
     }
     refetchList && refetchList();
   };
 
-  return !isClient || (id && !techData) ? null : (
+  return !isClient || (id && !projectData) ? null : (
     <DialogRenderer
       open={open}
       setOpen={setOpen}
       scroll
       trigger={
         <Button className={`w-full${id ? " hidden" : ""}`}>
-          {id ? "Edit Tech" : "Add Tech"}
+          {id ? "Edit Project" : "Add Project"}
         </Button>
       }
       content={
         <DialogContentRenderer
-          title={id ? "Edit Tech" : "Add Tech"}
-          description={id ? "Edit the tech stack" : "Add a new tech stack"}
+          title={id ? "Edit Project" : "Add Project"}
+          description={id ? "Edit the project" : "Add a new project"}
           content={
-            <TechForm
+            <ProjectForm
+              techs={techs}
               refetch={refetch}
-              techData={techData}
+              projectData={projectData}
               closeDialog={() => setOpen(false)}
             />
           }
@@ -91,4 +95,4 @@ const TechFormRenderer = ({
     />
   );
 };
-export default TechFormRenderer;
+export default ProjectFormRenderer;

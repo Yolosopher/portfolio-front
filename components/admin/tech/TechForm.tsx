@@ -118,19 +118,11 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
           setChange={(val: number) => setPriority(val as PRIORITY)}
           className="w-full"
         />
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-3 flex-col items-center">
           <ImageStore
             choosenImageName={choosenImageName}
             setChoosenImageName={setChoosenImageName}
           />
-          {choosenImageName ? (
-            <>
-              <RenderImage
-                name={choosenImageName}
-                className="w-20 h-14 border-4 border-primary rounded-md object-cover aspect-[unset]"
-              />
-            </>
-          ) : null}
         </div>
       </div>
       <Separator className="my-3" />
