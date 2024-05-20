@@ -1,4 +1,3 @@
-"use client";
 import { ITechStack } from "@/models/tech";
 import TechItem from "./TechItem";
 import { cn } from "@/lib/utils";
