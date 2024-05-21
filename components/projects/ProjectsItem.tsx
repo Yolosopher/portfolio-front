@@ -24,7 +24,6 @@ const ProjectsItem = ({
   stack,
   hidden,
 }: ProjectsItemProps) => {
-  const invertOnDark = description && description.includes("invert");
   return hidden ? null : (
     <li className="w-full h-max">
       <article
@@ -58,7 +57,7 @@ const ProjectsItem = ({
             </HoverCardContent>
           </HoverCard>
           <div className="mb-4">
-            <h6 className="text-md mb-1 text-bluish dark:text-shd">
+            <h6 className="text-md mb-1 line-clamp-2 text-bluish dark:text-shd">
               Tech stack:
             </h6>
             <ul className="flex flex-wrap gap-1 select-none">
