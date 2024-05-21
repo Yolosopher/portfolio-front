@@ -9,7 +9,10 @@ import { inViewContext } from "@/context/inViewContext";
 
 const HomeTechStack = ({
   techs,
-}: Omit<TechContentProps, "active" | "sizeInfo">) => {
+  separate,
+}: Omit<TechContentProps, "active" | "sizeInfo"> & {
+  separate?: boolean;
+}) => {
   const { updateViewInfo } = useContext(inViewContext);
   const mediaSize = useMediaSize();
 
@@ -41,7 +44,9 @@ const HomeTechStack = ({
   });
 
   useEffect(() => {
-    updateViewInfo(homeScrollIds.techStack, inView);
+    if (!separate) {
+      updateViewInfo(homeScrollIds.techStack, inView);
+    }
   }, [inView]);
 
   return (
