@@ -1,5 +1,7 @@
 "use client";
-import TechContent, { TechContentProps } from "@/components/tech/TechContent";
+import ProjectContent, {
+  ProjectsContentProps,
+} from "@/components/projects/ProjectsContent";
 import SectionTitle from "../section-title/SectionTitle";
 import { useInView } from "react-intersection-observer";
 import useMediaSize from "@/hooks/media-query/useMediaSize";
@@ -7,9 +9,9 @@ import { useContext, useEffect, useMemo } from "react";
 import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
 
-const HomeTechStack = ({
-  techs,
-}: Omit<TechContentProps, "active" | "sizeInfo">) => {
+const HomeProjects = ({
+  projects,
+}: Omit<ProjectsContentProps, "active" | "sizeInfo">) => {
   const { updateViewInfo } = useContext(inViewContext);
   const mediaSize = useMediaSize();
 
@@ -34,6 +36,7 @@ const HomeTechStack = ({
       cols: 2,
     };
   }, [mediaSize]);
+
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -41,25 +44,29 @@ const HomeTechStack = ({
   });
 
   useEffect(() => {
-    updateViewInfo(homeScrollIds.techStack, inView);
+    updateViewInfo(homeScrollIds.projects, inView);
   }, [inView]);
 
   return (
     <div className="overflow-hidden section-element">
       <section className="container pt-8 pb-44">
         <SectionTitle
-          scrollLink={homeScrollIds.techStack}
-          title="Tech Stack"
-          description="Technologies I've been working with recently"
+          scrollLink={homeScrollIds.projects}
+          title="Projects"
+          description="Some of the things I've built so far"
         />
         <div
-          className="flex justify-end w-full min-h-[340px] overflow-visible"
+          className="flex justify-start w-full min-h-[567px] overflow-visible"
           ref={ref}
         >
-          <TechContent techs={techs} active={inView} sizeInfo={sizeInfo} />
+          <ProjectContent
+            projects={projects}
+            active={inView}
+            sizeInfo={sizeInfo}
+          />
         </div>
       </section>
     </div>
   );
 };
-export default HomeTechStack;
+export default HomeProjects;

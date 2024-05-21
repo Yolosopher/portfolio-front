@@ -12,7 +12,7 @@ const LinkToAdmin = () => {
       <Link
         href={"/admin"}
         rel="nofollow"
-        className="fixed z-10 bottom-3 right-2"
+        className="fixed z-10 bottom-3 right-3"
       >
         <Shield />
       </Link>

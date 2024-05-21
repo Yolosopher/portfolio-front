@@ -23,6 +23,7 @@ const RenderImage = ({
   height,
   viewer,
   invertOnDark,
+  fill,
   ...args
 }: RenderImageProps) => {
   const source = src ?? `${CONFIG.img_store_origin}/image/${name}`;
@@ -36,8 +37,12 @@ const RenderImage = ({
         invertOnDark ? "dark:filter dark:invert" : "",
         className
       )}
-      width={width ?? 160}
-      height={height ?? 160}
+      {...((fill
+        ? { fill: true }
+        : {
+            width: width ?? 160,
+            height: height ?? 160,
+          }) as any)}
       {...args}
     />
   );

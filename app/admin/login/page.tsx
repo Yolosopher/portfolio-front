@@ -58,7 +58,7 @@ const AdminLogin = () => {
     <div
       className="flex p-24 justify-center items-center"
       style={{
-        height: "calc(100dvh - 9rem)",
+        height: "calc(100dvh - 6rem)",
       }}
     >
       <form onSubmit={handleLogin} className="flex flex-col gap-3 mx-auto">

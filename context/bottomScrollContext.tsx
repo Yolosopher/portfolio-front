@@ -6,13 +6,15 @@ type bottomScrollContextType = {
   fullyScrolled: boolean;
 };
 
-const bottomScrollContext = createContext<bottomScrollContextType>({
+export const bottomScrollContext = createContext<bottomScrollContextType>({
   fullyScrolled: true,
 });
 
-const BottomScrollProvider = ({
+export const BottomScrollProvider = ({
   children,
-}: Readonly<{ children: React.ReactNode }>) => {
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   const [fullyScrolled, setFullyScrolled] = useState<boolean>(true);
 
   const { ref, inView } = useInView({
@@ -38,5 +40,3 @@ const BottomScrollProvider = ({
     </bottomScrollContext.Provider>
   );
 };
-
-export { bottomScrollContext, BottomScrollProvider };

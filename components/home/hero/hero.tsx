@@ -6,9 +6,12 @@ import { poppins } from "@/lib/fonts";
 const Hero = ({ settings }: { settings: ISetting }) => {
   return (
     <div
-      className="container min-h-[520px] sm:min-h-[380px] xl:min-h-[550px] flex flex-col gap-6 relative"
+      className={cn(
+        "container flex flex-col gap-6 relative",
+        "min-h-[520px] sm:min-h-[400px] xl:min-h-[600px]"
+      )}
       style={{
-        height: "calc(100dvh - 9rem)",
+        height: "calc(100dvh - 6rem)",
       }}
     >
       <article className="flex flex-col items-end justify-center gap-6 sm:flex-row sm:items-center flex-1">

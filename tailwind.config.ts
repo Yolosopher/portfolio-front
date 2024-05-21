@@ -62,6 +62,12 @@ const config = {
         bluish: {
           DEFAULT: "hsl(var(--bluish))",
         },
+        nighty: {
+          DEFAULT: "hsl(var(--nighty))",
+        },
+        shd: {
+          DEFAULT: "hsl(var(--s-h-d))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

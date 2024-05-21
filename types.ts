@@ -7,3 +7,8 @@ export enum ReadAccess {
   PUBLIC = "public",
   PRIVATE = "private",
 }
+
+export type SizeInfo = {
+  cols: number;
+  hiddenNumber: number;
+};
