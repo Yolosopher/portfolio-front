@@ -42,10 +42,16 @@ const ProjectsItem = ({
           />
         </div>
         <div className="px-6 py-5 flex-1 flex flex-col">
-          <h3 className="flex items-center justify-center text-center w-full font-medium text-bluish flex-1 dark:text-shd text-[1.75rem] mb-[.625rem] capitalize">
-            {name}
-          </h3>
-
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <h3 className="text-center w-full font-medium text-bluish flex-1 dark:text-shd text-[1.75rem] mb-[.625rem] capitalize leading-[42px] flex items-center justify-center select-none">
+                <span className="line-clamp-2 overflow-hidden">{name}</span>
+              </h3>
+            </HoverCardTrigger>
+            <HoverCardContent side="top" className="w-80">
+              <p className="text-base select-auto capitalize">{name}</p>
+            </HoverCardContent>
+          </HoverCard>
           <HoverCard>
             <HoverCardTrigger asChild>
               <p className="text-base line-clamp-5 mb-3 select-none text-gr dark:text-shd">
@@ -57,7 +63,7 @@ const ProjectsItem = ({
             </HoverCardContent>
           </HoverCard>
           <div className="mb-4">
-            <h6 className="text-md mb-1 line-clamp-2 text-bluish dark:text-shd">
+            <h6 className="text-md mb-1 text-bluish dark:text-shd">
               Tech stack:
             </h6>
             <ul className="flex flex-wrap gap-1 select-none">
