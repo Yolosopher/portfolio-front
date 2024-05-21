@@ -48,8 +48,25 @@ const EducationForm = ({
   const [description, setDescription] = useState<string>(
     educationData?.description || ""
   );
-  const [startDate, setStartDate] = useState<Date | undefined>(new Date());
-  const [endDate, setEndDate] = useState<Date | undefined>(new Date());
+  const [startDate, setStartDate] = useState<Date | undefined>(
+    new Date(educationData?.start_date ?? Date.now())
+  );
+  const [endDate, setEndDate] = useState<Date | undefined>(
+    educationData?.end_date ? new Date(educationData.end_date) : undefined
+  );
+
+  useEffect(() => {
+    if (!educationData) {
+      return;
+    }
+    setUniversity(educationData.university);
+    setField(educationData.field);
+    setDescription(educationData.description);
+    setStartDate(new Date(educationData.start_date));
+    setEndDate(
+      educationData.end_date ? new Date(educationData.end_date) : undefined
+    );
+  }, [educationData]);
 
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
@@ -140,15 +157,23 @@ const EducationForm = ({
           wFull
           label="Start Date"
         />
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-end justify-between gap-2">
           <DatePicker
             date={endDate}
             setDate={setEndDate}
             wFull
             label="End Date"
+            className="pb-0 mb-0"
+            emptyText="Present"
           />
-          {id && (
-            <SetEndDateAsCurrent refetch={refetch} id={id} disabled={loading} />
+          {id && educationData?.end_date && (
+            <div className="self-end">
+              <SetEndDateAsCurrent
+                refetch={refetch}
+                id={id}
+                disabled={loading}
+              />
+            </div>
           )}
         </div>
       </div>

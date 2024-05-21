@@ -13,6 +13,7 @@ import { PenLine, Trash } from "lucide-react";
 import { useMemo } from "react";
 import { Confirm } from "../confirm/Confirm";
 import { cn } from "@/lib/utils";
+import Clipboard from "@/components/shared/clipboard/Clipboard";
 
 type ActionType = "edit" | "delete";
 
@@ -83,9 +84,7 @@ const RenderTable = <T,>({
                 ));
               } else if (value === "_id") {
                 content = (
-                  <div title={val}>
-                    {val.length > 10 ? `${val.slice(0, 10)}...` : val}
-                  </div>
+                  <Clipboard content={val} maxLength={7} iconSize={16} />
                 );
               } else if (value === "description") {
                 content = (
@@ -103,13 +102,21 @@ const RenderTable = <T,>({
                       target="_blank"
                       className="block"
                     >
-                      {v.length > 20 ? `${v.slice(19)}...` : v}
+                      {v.length > 20
+                        ? v.length > 35
+                          ? `${v.slice(19, -10)}...`
+                          : `${v.slice(19)}`
+                        : v}
                     </a>
                   ));
                 } else {
                   content = (
                     <a title={val} href={val} target="_blank">
-                      {val.length > 20 ? `${val.slice(19)}...` : val}
+                      {val.length > 20
+                        ? val.length > 35
+                          ? `${val.slice(19, -10)}...`
+                          : `${val.slice(19)}`
+                        : val}
                     </a>
                   );
                 }

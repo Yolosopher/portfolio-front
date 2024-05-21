@@ -21,7 +21,7 @@ const AdminProjectSlot = async () => {
       <div className="container flex flex-col gap-3">
         <div className="relative mt-6 flex md:justify-center items-center mb-4">
           <h1 className="text-2xl md:text-4xl font-bold md:text-center text-left">
-            Admin Projects
+            Admin | Projects
           </h1>
           <div className="flex w-max absolute top-1/2 right-0 -translate-y-1/2">
             <ProjectFormRenderer refetchList={refetchList} techs={techs.data} />

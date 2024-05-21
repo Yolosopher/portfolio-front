@@ -18,16 +18,25 @@ const DatePicker = ({
   setDate,
   label,
   wFull,
+  className,
+  labelClassName,
+  emptyText,
 }: {
   wFull?: boolean;
   label?: string;
   date: Date | undefined;
   setDate: (date: Date | undefined) => void;
+  className?: string;
+  labelClassName?: string;
+  emptyText?: string;
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="flex flex-col gap-2 w-full pb-1">
-      <Label onClick={() => setOpen(true)} className="pl-2">
+    <div className={cn("flex flex-col gap-2 w-full pb-1", className)}>
+      <Label
+        onClick={() => setOpen(true)}
+        className={cn("pl-2", labelClassName)}
+      >
         {label ?? "Pick a date"}
       </Label>
       <Popover open={open} onOpenChange={setOpen}>
@@ -41,7 +50,13 @@ const DatePicker = ({
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
+            {date ? (
+              format(date, "PPP")
+            ) : emptyText ? (
+              <span>{emptyText}</span>
+            ) : (
+              <span>Pick a date</span>
+            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">

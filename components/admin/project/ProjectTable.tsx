@@ -85,7 +85,7 @@ const ProjectTable = ({
         };
       })}
       imageKeys={["image"]}
-      links={["github", "preview"]}
+      links={["preview"]}
       actions={
         new Map([
           [

@@ -37,27 +37,23 @@ const ProjectForm = ({
   projectData,
   closeDialog,
 }: ProjectFormProps) => {
+  const request = useApiRequest();
+  const errorHandler = useErrorHandler();
   const id = useMemo(() => projectData?._id, [projectData]);
   const [loading, setLoading] = useState<boolean>(false);
 
   // image inputs
-  const [choosenImageName, setChoosenImageName] = useState<string>(
-    projectData?.image || ""
-  );
+  const [choosenImageName, setChoosenImageName] = useState<string>("");
 
   // string inputs
-  const [group, setGroup] = useState<string>(projectData?.group || "");
-  const [name, setName] = useState<string>(projectData?.name || "");
-  const [description, setDescription] = useState<string>(
-    projectData?.description || ""
-  );
-  const [github, setGithub] = useState<string>(projectData?.github || "");
-  const [preview, setPreview] = useState<string>(projectData?.preview || "");
+  const [group, setGroup] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [github, setGithub] = useState<string>("");
+  const [preview, setPreview] = useState<string>("");
 
   //  select inputs
-  const [selectedValues, setSelectedValues] = useState<string[]>(
-    (projectData?.stack && projectData.stack.map(({ _id }: any) => _id)) || []
-  );
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
   const handleSelect = (value: string, checked: boolean) => {
     setSelectedValues((prev) =>
@@ -67,8 +63,20 @@ const ProjectForm = ({
     );
   };
 
-  const request = useApiRequest();
-  const errorHandler = useErrorHandler();
+  useEffect(() => {
+    if (!projectData) {
+      return;
+    }
+    setGroup(projectData.group || "");
+    setName(projectData.name || "");
+    setDescription(projectData.description || "");
+    setGithub(projectData.github || "");
+    setPreview(projectData.preview || "");
+    setChoosenImageName(projectData.image || "");
+    setSelectedValues(
+      (projectData?.stack && projectData.stack.map(({ _id }: any) => _id)) || []
+    );
+  }, [projectData]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

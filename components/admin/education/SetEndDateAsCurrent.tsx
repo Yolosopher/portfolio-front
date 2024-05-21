@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import useApiRequest from "@/hooks/request/useApiRequest";
+import { Loader } from "lucide-react";
 import { useState } from "react";
 
 type SetEndDateAsCurrentProps = {
@@ -23,6 +24,7 @@ const SetEndDateAsCurrent = ({
 
   const handleFunction = async () => {
     try {
+      setLoading(true);
       const result = await request({
         url: id ? `/education/${id}` : "/education",
         method: "PATCH",
@@ -47,8 +49,13 @@ const SetEndDateAsCurrent = ({
     }
   };
   return (
-    <Button type="button" onClick={handleFunction} disabled={disabled}>
-      Mark as Current
+    <Button
+      type="button"
+      onClick={handleFunction}
+      disabled={disabled || loading}
+    >
+      {loading && <Loader size={16} className="animate animate-spin" />}
+      {loading ? "Processing..." : "Mark as Current"}
     </Button>
   );
 };

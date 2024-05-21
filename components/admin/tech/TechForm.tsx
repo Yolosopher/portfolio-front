@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AdminInput from "../input/AdminInput";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -20,20 +20,27 @@ type TechFormProps = {
 };
 
 const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
-  const id = useMemo(() => techData?._id, [techData]);
-  const [choosenImageName, setChoosenImageName] = useState<string>(
-    techData?.icon || ""
-  );
-  const [name, setName] = useState<string>(techData?.name || "");
-  const [description, setDescription] = useState<string>(
-    techData?.description || ""
-  );
-  const [level, setLevel] = useState<LEVEL>(techData?.level || 5);
-  const [priority, setPriority] = useState<LEVEL>(techData?.priority || 3);
-  const [loading, setLoading] = useState<boolean>(false);
-
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
+  const id = useMemo(() => techData?._id, [techData]);
+  const [choosenImageName, setChoosenImageName] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [level, setLevel] = useState<LEVEL>(5);
+  const [priority, setPriority] = useState<LEVEL>(3);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!techData) {
+      return;
+    }
+
+    setName(techData.name || "");
+    setDescription(techData.description || "");
+    setLevel(techData.level || 5);
+    setPriority(techData.priority || 3);
+    setChoosenImageName(techData.icon || "");
+  }, [techData]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
