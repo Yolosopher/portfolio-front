@@ -106,6 +106,12 @@ const RenderTable = <T,>({
                       {v.length > 20 ? `${v.slice(19)}...` : v}
                     </a>
                   ));
+                } else {
+                  content = (
+                    <a title={val} href={val} target="_blank">
+                      {val.length > 20 ? `${val.slice(19)}...` : val}
+                    </a>
+                  );
                 }
               } else if (imageKeys && imageKeys.includes(value)) {
                 content = val ? (
