@@ -28,7 +28,7 @@ const ProjectsItem = ({
     <li className="w-full h-max">
       <article
         className={cn(
-          "w-full min-h-[35.25rem] flex flex-col rounded-[1.25rem] bg-nighty overflow-hidden",
+          "w-full min-h-[41.375rem] flex flex-col rounded-[1.25rem] bg-nighty overflow-hidden",
           "shadow-[0_2px_100px_hsl(var(--primary)/0.5)] dark:shadow-[0_2px_100px_hsl(var(--primary)/0.2)]"
         )}
       >
@@ -41,8 +41,8 @@ const ProjectsItem = ({
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="px-6 py-5">
-          <h3 className="font-medium text-bluish dark:text-shd text-[1.75rem] mb-[.625rem] capitalize">
+        <div className="px-6 py-5 flex-1 flex flex-col">
+          <h3 className="flex items-center justify-center text-center w-full font-medium text-bluish flex-1 dark:text-shd text-[1.75rem] mb-[.625rem] capitalize">
             {name}
           </h3>
 
