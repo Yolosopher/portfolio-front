@@ -28,7 +28,7 @@ const AdminHeader = () => {
     return null;
   }
   return (
-    <div className="fixed z-20 top-0 left-0 w-full text-secondary-foreground bg-secondary">
+    <div className="fixed z-20 bottom-0 left-0 w-full text-secondary-foreground bg-secondary">
       <div className="container py-1.5 flex justify-between items-center w-full">
         <h2 className="hidden md:block font-bold text-lg text-primary">
           Admin Nav
