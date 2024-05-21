@@ -27,11 +27,7 @@ const ProjectsContent = ({
       )}
     >
       {projects.map((project, i) => (
-        <ProjectsItem
-          key={project._id}
-          {...project}
-          hidden={i + 1 >= sizeInfo.hiddenNumber}
-        />
+        <ProjectsItem key={project._id} {...project} hidden={i + 1 >= 7} />
       ))}
     </ul>
   );
