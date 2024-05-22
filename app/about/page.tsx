@@ -26,7 +26,7 @@ const About = async () => {
           <div
             className={cn(
               poppins.className,
-              "text-bluish dark:text-gr flex flex-col gap-4 sm:gap-7"
+              "text-bluish dark:text-[#CCCCCC] flex flex-col gap-4 sm:gap-7"
             )}
           >
             <h1 className="font-bold text-3xl sm:text-[2.625rem]">About Me</h1>

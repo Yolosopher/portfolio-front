@@ -26,7 +26,9 @@ const SectionTitle = ({
       )}
       {...(scrollLink && { id: scrollLink })}
     >
-      <As className="font-bold text-3xl sm:text-5xl">{title}</As>
+      <As className="font-bold text-3xl sm:text-5xl dark:text-[#CCCCCC]">
+        {title}
+      </As>
       {description && (
         <p className={cn(poppins.className, "text-lg sm:text-2xl")}>
           {description}

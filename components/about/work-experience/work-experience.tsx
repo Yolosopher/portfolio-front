@@ -16,7 +16,7 @@ const WorkExperience = ({ experiences }: WorkExperienceProps) => {
           "text-bluish dark:text-gr flex flex-col gap-4 sm:gap-7"
         )}
       >
-        <h1 className="font-bold text-3xl sm:text-[2.625rem]">
+        <h1 className="font-bold text-3xl sm:text-[2.625rem] dark:text-[#CCCCCC]">
           Work Experience
         </h1>
         <p className={cn(poppins.className, "text-lg sm:text-lg")}></p>
