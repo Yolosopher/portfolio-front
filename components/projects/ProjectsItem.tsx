@@ -64,9 +64,9 @@ const ProjectsItem = ({
             </HoverCardContent>
           </HoverCard>
           <div className="mb-4">
-            <h6 className="text-md mb-1 text-bluish dark:text-shd">
+            <h4 className="text-md mb-1 text-bluish dark:text-shd">
               Tech stack:
-            </h6>
+            </h4>
             <ul className="flex flex-wrap gap-1 select-none">
               {stack?.map((tech, i) => (
                 <li

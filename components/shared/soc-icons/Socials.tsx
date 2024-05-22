@@ -19,6 +19,7 @@ const SocialLi = ({
         href={href}
         target="_blank"
         rel="noreferrer"
+        aria-label="Social link"
         className={cn(
           "flex rounded-full overflow-hidden  transition-all  justify-center items-center w-[1.875rem] h-[1.875rem] bg-gr text-gr-foreground dark:hover:bg-white dark:bg-gr hover:bg-foreground dark:hover:bg-foreground",
           className ?? ""

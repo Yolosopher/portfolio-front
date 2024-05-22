@@ -10,6 +10,7 @@ const LinkToAdmin = () => {
   return pathname.includes("/admin") ? null : (
     <Button asChild size={"icon"}>
       <Link
+        aria-label="Admin panel"
         href={"/admin"}
         rel="nofollow"
         className="fixed z-10 bottom-3 right-3"

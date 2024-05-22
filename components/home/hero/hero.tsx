@@ -27,9 +27,9 @@ const Hero = ({ settings }: { settings: ISetting }) => {
             className="object-contain"
             alt="yolosopher-image"
             src="/my-images/5.png"
-            width={500}
+            width={304}
+            height={432}
             priority
-            height={500}
           />
         </div>
       </article>
