@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Allow: /about/
+Allow: /tech/
+Allow: /projects/ 
+Allow: /contact/
+Allow: /
+Sitemap: https://yolosopher.online/sitemap.xml
