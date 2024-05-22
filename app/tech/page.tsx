@@ -13,6 +13,7 @@ const Tech = async () => {
         <SectionTitle
           title="Tech Stack"
           description="Technologies I've been working with recently"
+          alwaysLeft
         />
         <div className="flex justify-end w-full min-h-[340px] overflow-visible">
           <ul

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import ProjectContent, {
@@ -54,7 +55,12 @@ const HomeProjects = ({
         <SectionTitle
           scrollLink={homeScrollIds.projects}
           title="Projects"
-          description="Some of the things I've built so far"
+          description={
+            <span>
+              Some of the things I've build so far{" "}
+              <span className="text-primary">(and I can legally share)</span>
+            </span>
+          }
         />
         <div
           className="flex justify-start w-full min-h-[567px] overflow-visible"

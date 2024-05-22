@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { fetchProjects } from "@/actions/projects";
 import SectionTitle from "@/components/home/section-title/SectionTitle";
 import ProjectsItem from "@/components/projects/ProjectsItem";
@@ -13,7 +14,13 @@ const Projects = async () => {
       <section className="container pt-8 sm:pt-10 lg:pt-16 xl:pt-20 pb-44">
         <SectionTitle
           title="Projects"
-          description="Some of the things I've built so far"
+          description={
+            <span>
+              Some of the things I've build so far{" "}
+              <span className="text-primary">(and I can legally share)</span>
+            </span>
+          }
+          alwaysLeft
         />
         <div className="flex justify-start w-full min-h-[567px] overflow-visible">
           <ul
