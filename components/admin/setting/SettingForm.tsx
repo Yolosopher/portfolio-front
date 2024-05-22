@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import AdminInput from "../input/AdminInput";
 import { Loader } from "lucide-react";
 import AdminTextArea from "../input/AdminTextArea";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { poppins } from "@/lib/fonts";
 import useApiRequest from "@/hooks/request/useApiRequest";
