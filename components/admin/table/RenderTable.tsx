@@ -14,6 +14,7 @@ import { useMemo } from "react";
 import { Confirm } from "../confirm/Confirm";
 import { cn } from "@/lib/utils";
 import Clipboard from "@/components/shared/clipboard/Clipboard";
+import { format } from "date-fns";
 
 type ActionType = "edit" | "delete";
 
@@ -27,10 +28,12 @@ interface RenderTableProps<T> {
   imageKeys?: string | string[];
   links?: string[];
   name?: string;
+  dateKeys?: string | string[];
 }
 
 const RenderTable = <T,>({
   imageKeys,
+  dateKeys,
   links,
   actions,
   heads,
@@ -120,6 +123,12 @@ const RenderTable = <T,>({
                     </a>
                   );
                 }
+              } else if (dateKeys && dateKeys.includes(value)) {
+                content = (
+                  <span>
+                    {val ? format(new Date(val), "yyyy MMM") : "Present"}
+                  </span>
+                );
               } else if (imageKeys && imageKeys.includes(value)) {
                 content = val ? (
                   <RenderImage

@@ -8,44 +8,50 @@ import useApiRequest from "@/hooks/request/useApiRequest";
 import { Loader } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
-import { IEducation } from "@/models/education";
+import { IExperience, WorkHours } from "@/models/experience";
 import DatePicker from "@/components/shared/date-picker/DatePicker";
 import SetEndDateAsCurrent from "../set-date-as-current/SetEndDateAsCurrent";
+import RadioInput from "@/components/shared/radio-input/radio-input";
+import { DayPickerProvider } from "react-day-picker";
 
-type EducationFormProps = {
-  educationData: IEducation | null;
+type ExperienceFormProps = {
+  experienceData: IExperience | null;
   refetch: () => void | Promise<void>;
   closeDialog: () => void;
 };
 
-const EducationForm = ({
+const ExperienceForm = ({
   refetch,
-  educationData,
+  experienceData,
   closeDialog,
-}: EducationFormProps) => {
-  const id = useMemo(() => educationData?._id, [educationData]);
+}: ExperienceFormProps) => {
+  const id = useMemo(() => experienceData?._id, [experienceData]);
   const [loading, setLoading] = useState<boolean>(false);
 
   // string inputs
-  const [university, setUniversity] = useState<string>("");
-  const [field, setField] = useState<string>("");
+  const [company, setCompany] = useState<string>("");
+  const [position, setPosition] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
+  const [workHours, setWorkHours] = useState<WorkHours>(WorkHours.INTERNSHIP);
 
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
   useEffect(() => {
-    if (!educationData) {
+    if (!experienceData) {
       return;
     }
-    setUniversity(educationData.university || "");
-    setField(educationData.field || "");
-    setDescription(educationData.description || "");
-    setStartDate(new Date(educationData.start_date) || undefined);
+    setCompany(experienceData.company || "");
+    setLocation(experienceData.location || "");
+    setPosition(experienceData.position || "");
+    setDescription(experienceData.description || "");
+    setStartDate(new Date(experienceData.start_date) || undefined);
     setEndDate(
-      educationData.end_date ? new Date(educationData.end_date) : undefined
+      experienceData.end_date ? new Date(experienceData.end_date) : undefined
     );
-  }, [educationData]);
+    setWorkHours(experienceData.work_hours || WorkHours.INTERNSHIP);
+  }, [experienceData]);
 
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
@@ -56,16 +62,24 @@ const EducationForm = ({
     try {
       setLoading(true);
       // validate form
-      if (!field) {
-        throw new Error("Field is required");
+      if (!position) {
+        throw new Error("Position is required");
       }
 
       const payload: any = {
-        field,
+        position,
       };
 
-      if (university) {
-        payload.university = university;
+      if (company) {
+        payload.company = company;
+      }
+
+      if (workHours) {
+        payload.work_hours = workHours;
+      }
+
+      if (location) {
+        payload.location = location;
       }
 
       if (description) {
@@ -79,7 +93,7 @@ const EducationForm = ({
       }
 
       const result = await request({
-        url: id ? `/education/${id}` : "/education",
+        url: id ? `/experience/${id}` : "/experience",
         method: id ? "PUT" : "POST",
         body: payload,
         auth: true,
@@ -91,7 +105,7 @@ const EducationForm = ({
         } else {
           toast({
             title: "Success",
-            description: result.data.message ?? "Education added successfully",
+            description: result.data.message ?? "Experience added successfully",
           });
           refetch();
           if (!id) {
@@ -111,17 +125,37 @@ const EducationForm = ({
       <div className="flex flex-col gap-2 px-2">
         <AdminInput
           disabled={loading}
-          label="Field"
-          value={field}
-          onChange={(e) => setField(e.target.value)}
-          placeholder="Type field here..."
+          label="Position"
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+          placeholder="Type position here..."
         />
         <AdminInput
           disabled={loading}
-          label="University"
-          value={university}
-          onChange={(e) => setUniversity(e.target.value)}
-          placeholder="type university here..."
+          label="Company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          placeholder="type company here..."
+        />
+        <AdminInput
+          disabled={loading}
+          label="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="type location here..."
+        />
+        <RadioInput
+          name="work_hours"
+          label="Employment Type"
+          value={workHours}
+          className="mt-1"
+          radioGroupClassName="pt-1 mb-0"
+          setValue={setWorkHours}
+          options={[
+            { label: WorkHours.FULL_TIME, value: WorkHours.FULL_TIME },
+            { label: WorkHours.PART_TIME, value: WorkHours.PART_TIME },
+            { label: WorkHours.INTERNSHIP, value: WorkHours.INTERNSHIP },
+          ]}
         />
         <AdminInput
           disabled={loading}
@@ -146,7 +180,7 @@ const EducationForm = ({
             className="pb-0 mb-0"
             emptyText="Present"
           />
-          {id && educationData?.end_date && (
+          {id && experienceData?.end_date && (
             <div className="self-end">
               <SetEndDateAsCurrent
                 refetch={refetch}
@@ -171,4 +205,4 @@ const EducationForm = ({
     </form>
   );
 };
-export default EducationForm;
+export default ExperienceForm;

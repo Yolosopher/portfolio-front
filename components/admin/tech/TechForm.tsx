@@ -101,6 +101,7 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
         <AdminInput
           disabled={loading}
           label="Description"
+          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."

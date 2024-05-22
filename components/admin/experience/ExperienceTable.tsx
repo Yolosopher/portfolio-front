@@ -5,20 +5,28 @@ import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
 import { ITechStack } from "@/models/tech";
-import { IEducation } from "@/models/education";
+import { IExperience } from "@/models/experience";
 
-const educationHeads = [
+const experienceHeads = [
   {
     label: "ID",
     value: "_id",
   },
   {
-    label: "Field",
-    value: "field",
+    label: "Position",
+    value: "position",
   },
   {
-    label: "University",
-    value: "university",
+    label: "Company",
+    value: "company",
+  },
+  {
+    label: "Location",
+    value: "location",
+  },
+  {
+    label: "Employment Type",
+    value: "work_hours",
   },
   {
     label: "Start Date",
@@ -33,21 +41,21 @@ const educationHeads = [
     value: "description",
   },
 ];
-const EducationTable = ({
-  educations,
+const ExperienceTable = ({
+  experiences,
   refetch,
 }: {
-  educations: IEducation[];
+  experiences: IExperience[];
   refetch: () => Promise<void>;
 }) => {
   const router = useRouter();
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
 
-  const deleteEducation = async (id: string) => {
+  const deleteExperience = async (id: string) => {
     try {
       const result = await request({
-        url: `/education/${id}`,
+        url: `/experience/${id}`,
         method: "DELETE",
         auth: true,
       });
@@ -60,7 +68,7 @@ const EducationTable = ({
           toast({
             title: "Success",
             description:
-              result.data.message ?? "Education deleted successfully",
+              result.data.message ?? "Experience deleted successfully",
           });
           refetch();
         }
@@ -72,23 +80,23 @@ const EducationTable = ({
 
   return (
     <RenderTable
-      heads={educationHeads}
-      rows={educations}
+      heads={experienceHeads}
+      rows={experiences}
       dateKeys={["start_date", "end_date"]}
       actions={
         new Map([
           [
             "edit",
             (id) =>
-              router.push(`/admin/educations/edit/${id}`, {
+              router.push(`/admin/experiences/edit/${id}`, {
                 scroll: true,
               }),
           ],
-          ["delete", (id) => deleteEducation(id)],
+          ["delete", (id) => deleteExperience(id)],
         ])
       }
     />
   );
 };
 
-export default EducationTable;
+export default ExperienceTable;

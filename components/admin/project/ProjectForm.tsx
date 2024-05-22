@@ -152,6 +152,7 @@ const ProjectForm = ({
         <AdminInput
           disabled={loading}
           label="Description"
+          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."
