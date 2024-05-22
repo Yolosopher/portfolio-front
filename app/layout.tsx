@@ -7,9 +7,14 @@ import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
+<meta
+  name="description"
+  content="Explore the portfolio of Nika Nishnianidze (Yolosopher), an experienced web developer specializing in creating stunning, responsive websites. View projects, skills, and contact information."
+/>;
+
 const md = {
   title: "Yolosopher - Portfolio",
-  description: `Portfolio website for ${fullName}`,
+  description: `Explore the portfolio of ${fullName}, an experienced web developer specializing in creating stunning, responsive websites. View projects, skills, and contact information.`,
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon/apple-touch-icon.png",
@@ -17,6 +22,24 @@ const md = {
   },
   applicationName: "yolosopher.online",
   creator: fullName,
+  keywords: [
+    "web developer",
+    "web development portfolio",
+    "portfolio",
+    "front-end developer",
+    "back-end developer",
+    "full-stack developer",
+    "mern stack developer",
+    "pern stack developer",
+    "web development projects",
+    "nextjs",
+    "reactjs",
+    "nodejs",
+    "node.js",
+    "expressjs",
+    "Nika Nishnianidze",
+    "Yolosopher",
+  ],
 };
 export const metadata: Metadata = {
   title: md.title,
@@ -31,6 +54,7 @@ export const metadata: Metadata = {
     images: "/preview.png",
   },
   manifest: "/favicon/site.webmanifest",
+  keywords: md.keywords,
 };
 
 export default async function RootLayout({
