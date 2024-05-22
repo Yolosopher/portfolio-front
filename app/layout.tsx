@@ -5,7 +5,6 @@ import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
 const md = {
@@ -22,13 +21,9 @@ const md = {
 export const metadata: Metadata = {
   title: md.title,
   description: md.description,
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon/apple-touch-icon.png",
-    shortcut: "/favicon/apple-touch-icon.png",
-  },
-  applicationName: "yolosopher.online",
-  creator: fullName,
+  icons: md.icons,
+  applicationName: md.applicationName,
+  creator: md.creator,
   metadataBase: new URL("https://yolosopher.online"),
   openGraph: {
     title: md.title,
@@ -43,7 +38,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const googleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID;
   const { data } = await fetchSettings();
   return (
     <html lang="en">
@@ -56,11 +50,6 @@ export default async function RootLayout({
           <LayoutInner settings={data}>{children}</LayoutInner>
         </ThemeProvider>
       </body>
-      {googleAnalyticsId && (
-        <>
-          <GoogleTagManager gtmId={googleAnalyticsId} />
-        </>
-      )}
     </html>
   );
 }
