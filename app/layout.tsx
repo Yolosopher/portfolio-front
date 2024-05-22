@@ -5,7 +5,7 @@ import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
 const md = {
@@ -56,7 +56,11 @@ export default async function RootLayout({
           <LayoutInner settings={data}>{children}</LayoutInner>
         </ThemeProvider>
       </body>
-      {googleAnalyticsId && <GoogleAnalytics gaId={googleAnalyticsId} />}
+      {googleAnalyticsId && (
+        <>
+          <GoogleTagManager gtmId={googleAnalyticsId} />
+        </>
+      )}
     </html>
   );
 }
