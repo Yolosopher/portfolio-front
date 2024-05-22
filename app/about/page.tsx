@@ -30,9 +30,10 @@ const About = async () => {
             )}
           >
             <h1 className="font-bold text-3xl sm:text-[2.625rem]">About Me</h1>
-            <p className={cn(poppins.className, "text-lg sm:text-lg")}>
-              {setting.about_me ?? ""}
-            </p>
+            <p
+              className={cn(poppins.className, "text-lg sm:text-lg")}
+              dangerouslySetInnerHTML={{ __html: setting.about_me ?? "" }}
+            ></p>
           </div>
         </section>
         <section>
