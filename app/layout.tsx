@@ -43,6 +43,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const googleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID;
   const { data } = await fetchSettings();
   return (
     <html lang="en">
@@ -55,7 +56,7 @@ export default async function RootLayout({
           <LayoutInner settings={data}>{children}</LayoutInner>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-XYZ" />
+      {googleAnalyticsId && <GoogleAnalytics gaId={googleAnalyticsId} />}
     </html>
   );
 }
