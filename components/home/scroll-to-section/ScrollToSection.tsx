@@ -227,16 +227,3 @@ const ScrollToSection = () => {
   );
 };
 export default ScrollToSection;
-
-// const handleScrollOld = () => {
-//   if (window) {
-//     const viewportId = PAGE_SCROLL_ID;
-//     const viewportElement = document.getElementById(viewportId);
-//     if (viewportElement) {
-//       viewportElement.scrollBy({
-//         top: window.innerHeight - 96,
-//         behavior: "smooth",
-//       });
-//     }
-//   }
-// };

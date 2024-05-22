@@ -19,6 +19,10 @@ const navListAdmin = [
     name: "Experiences",
     path: "/admin/experiences",
   },
+  {
+    name: "Settings",
+    path: "/admin/settings",
+  },
 ];
 
 export default navListAdmin;

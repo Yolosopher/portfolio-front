@@ -1,23 +1,24 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import randomUID from "@/lib/randomUID";
 
-interface AdminInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface AdminTextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
 }
 
-const AdminInput = ({ label, ...args }: AdminInputProps) => {
+const AdminTextArea = ({ label, ...args }: AdminTextAreaProps) => {
   const uniqueId = randomUID();
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label htmlFor={uniqueId} className="pl-2">
         {label ?? args.name}
       </Label>
-      <Input id={uniqueId} {...args} />
+      <Textarea id={uniqueId} {...args} />
     </div>
   );
 };
 
-export default AdminInput;
+export default AdminTextArea;

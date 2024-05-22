@@ -13,6 +13,7 @@ import DatePicker from "@/components/shared/date-picker/DatePicker";
 import SetEndDateAsCurrent from "../set-date-as-current/SetEndDateAsCurrent";
 import RadioInput from "@/components/shared/radio-input/radio-input";
 import { DayPickerProvider } from "react-day-picker";
+import AdminTextArea from "../input/AdminTextArea";
 
 type ExperienceFormProps = {
   experienceData: IExperience | null;
@@ -157,10 +158,9 @@ const ExperienceForm = ({
             { label: WorkHours.INTERNSHIP, value: WorkHours.INTERNSHIP },
           ]}
         />
-        <AdminInput
+        <AdminTextArea
           disabled={loading}
           label="Description"
-          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."

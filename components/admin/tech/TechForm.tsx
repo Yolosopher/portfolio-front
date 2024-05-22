@@ -12,6 +12,7 @@ import { toast } from "@/components/ui/use-toast";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import ImageStore from "../image-store/ImageStore";
 import RenderImage from "@/components/shared/image/RenderImage";
+import AdminTextArea from "../input/AdminTextArea";
 
 type TechFormProps = {
   techData: ITechStack | null;
@@ -98,10 +99,9 @@ const TechForm = ({ refetch, techData, closeDialog }: TechFormProps) => {
           onChange={(e) => setName(e.target.value)}
           placeholder="Type name here..."
         />
-        <AdminInput
+        <AdminTextArea
           disabled={loading}
           label="Description"
-          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."

@@ -11,6 +11,7 @@ import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import { IEducation } from "@/models/education";
 import DatePicker from "@/components/shared/date-picker/DatePicker";
 import SetEndDateAsCurrent from "../set-date-as-current/SetEndDateAsCurrent";
+import AdminTextArea from "../input/AdminTextArea";
 
 type EducationFormProps = {
   educationData: IEducation | null;
@@ -123,10 +124,9 @@ const EducationForm = ({
           onChange={(e) => setUniversity(e.target.value)}
           placeholder="type university here..."
         />
-        <AdminInput
+        <AdminTextArea
           disabled={loading}
           label="Description"
-          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."

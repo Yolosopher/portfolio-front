@@ -12,15 +12,20 @@ import { IImage } from "@/models/image";
 import Images from "./Images";
 import CONFIG from "@/config";
 import RenderImage from "@/components/shared/image/RenderImage";
+import { cn } from "@/lib/utils";
 
 type ImageStoreProps = {
   choosenImageName: string;
   setChoosenImageName: (name: string) => void;
+  currentImageClassName?: string;
+  className?: string;
 };
 
 const ImageStore = ({
   choosenImageName,
   setChoosenImageName,
+  className,
+  currentImageClassName,
 }: ImageStoreProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [images, setImages] = useState<IImage[] | null>(null);
@@ -60,7 +65,7 @@ const ImageStore = ({
         trigger={
           <Button
             type="button"
-            className="flex items-center gap-2 overflow-hidden"
+            className={cn("flex items-center gap-2 overflow-hidden", className)}
           >
             Image Picker
             <ImagePlus />
@@ -87,7 +92,10 @@ const ImageStore = ({
         <>
           <RenderImage
             name={choosenImageName}
-            className="w-1/2 border-4 border-primary rounded-md object-cover "
+            className={cn(
+              "w-1/2 border-4 border-primary rounded-md object-cover",
+              currentImageClassName
+            )}
           />
         </>
       ) : null}

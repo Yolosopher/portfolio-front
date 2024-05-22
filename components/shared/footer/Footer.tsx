@@ -58,14 +58,14 @@ const Footer = ({ settings }: { settings: ISetting }) => {
             </div>
             <div className="text-center xl:text-right text-lg font-medium">
               Copyright © 2024{" "}
-              <span className="text-bluish dark:text-primary font-bold">
-                Yolosopher
-              </span>
-              . All rights reserved.
+              <span className="block sm:inline text-bluish dark:text-primary font-bold">
+                Yolosopher.
+              </span>{" "}
+              All rights reserved.
             </div>
           </div>
           {/* space */}
-          <div className="h-2 xl:h-4"></div>
+          <div className="h-4 sm:h-8 xl:h-4"></div>
         </div>
       </footer>
     </>

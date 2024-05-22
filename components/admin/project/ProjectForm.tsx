@@ -13,6 +13,7 @@ import RenderImage from "@/components/shared/image/RenderImage";
 import { IProject } from "@/models/project";
 import { MultiSelect, OptionType } from "../multi-select/MultiSelect";
 import { ITechStack } from "@/models/tech";
+import AdminTextArea from "../input/AdminTextArea";
 
 /*
   _id: string;
@@ -149,10 +150,9 @@ const ProjectForm = ({
           onChange={(e) => setName(e.target.value)}
           placeholder="Type name here..."
         />
-        <AdminInput
+        <AdminTextArea
           disabled={loading}
           label="Description"
-          textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Type description here..."
