@@ -31,11 +31,7 @@ const About = async () => {
           >
             <h1 className="font-bold text-3xl sm:text-[2.625rem]">About Me</h1>
             <p className={cn(poppins.className, "text-lg sm:text-lg")}>
-              {/* {setting.about_me} */}
-              The Generator App is an online tool that helps you to export
-              ready-made templates ready to work as your future website. It
-              helps you to combine slides, panels and other components and
-              export it as a set of static files: HTML/CSS/JS.
+              {setting.about_me ?? ""}
             </p>
           </div>
         </section>
