@@ -9,6 +9,7 @@ type ClipboardProps = {
   maxLength?: number;
   noIcon?: boolean;
   iconSize?: number;
+  onlyIcon?: boolean;
 };
 
 const Clipboard = ({
@@ -17,6 +18,7 @@ const Clipboard = ({
   content,
   className,
   iconSize,
+  onlyIcon,
 }: ClipboardProps) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(content);
@@ -30,10 +32,11 @@ const Clipboard = ({
       )}
       {...(noIcon && { onClick: copyToClipboard })}
     >
-      {maxLength
-        ? content.slice(0, maxLength) +
-          (content.length > maxLength ? "..." : "")
-        : content}
+      {!onlyIcon &&
+        (maxLength
+          ? content.slice(0, maxLength) +
+            (content.length > maxLength ? "..." : "")
+          : content)}
       {!noIcon && (
         <Copy
           {...(iconSize && { size: iconSize })}

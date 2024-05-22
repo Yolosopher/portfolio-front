@@ -79,3 +79,13 @@
 .container {
   @apply max-w-[1236px] mx-auto px-4 w-full;
 }
+
+.contact-text {
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(19, 176, 245) 3%,
+    rgb(231, 15, 170)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
