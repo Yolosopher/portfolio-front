@@ -5,6 +5,8 @@
 @layer base {
   :root {
     /* custom */
+    --light-green: 134 100% 92%;
+    --light-content: 0 0% 65%;
     --s-h-d: 0 0% 80%;
     --nighty: 0 0% 100%;
     --bluish: 237 25% 35%;
@@ -35,6 +37,8 @@
 
   .dark {
     /* custom */
+    --light-green: 134 100% 92%;
+    --light-content: 0 0% 65%;
     --s-h-d: 0 0% 80%;
     --nighty: 0 0% 21%;
     --bluish: 237 25% 35%;

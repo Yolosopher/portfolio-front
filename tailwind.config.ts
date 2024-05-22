@@ -68,6 +68,12 @@ const config = {
         shd: {
           DEFAULT: "hsl(var(--s-h-d))",
         },
+        lightcontent: {
+          DEFAULT: "hsl(var(--light-content))",
+        },
+        lightgreen: {
+          DEFAULT: "hsl(var(--light-green))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

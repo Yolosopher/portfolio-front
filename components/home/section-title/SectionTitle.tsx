@@ -6,6 +6,7 @@ type SectionTiTleProps = {
   description?: React.ReactNode;
   scrollLink?: string;
   alwaysLeft?: boolean;
+  useH1?: boolean;
 };
 
 const SectionTitle = ({
@@ -13,17 +14,19 @@ const SectionTitle = ({
   title,
   description,
   scrollLink,
+  useH1,
 }: SectionTiTleProps) => {
+  const As = useH1 ? "h1" : "h2";
   return (
     <div
       className={cn(
         poppins.className,
-        "text-gr flex flex-col gap-1 sm:gap-[15px] mb-12 sm:mb-24",
+        "text-bluish dark:text-gr flex flex-col gap-1 sm:gap-[15px] mb-12 sm:mb-24",
         !alwaysLeft && "sm:items-center"
       )}
       {...(scrollLink && { id: scrollLink })}
     >
-      <h2 className="font-bold text-3xl sm:text-5xl">{title}</h2>
+      <As className="font-bold text-3xl sm:text-5xl">{title}</As>
       {description && (
         <p className={cn(poppins.className, "text-lg sm:text-2xl")}>
           {description}
