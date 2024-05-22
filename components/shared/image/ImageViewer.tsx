@@ -27,7 +27,9 @@ const ImageViewer = ({
 }: ImageViewerProps) => {
   return (
     <Dialog>
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger className="flex relative w-full h-full">
+        {children}
+      </DialogTrigger>
       <DialogContent className="max-w-[unset] w-[90dvw] h-[90dvh] flex flex-col select-none">
         <DialogHeader className="flex-shrink-0 flex-grow-0 flex-b">
           <DialogTitle className="text-center">
@@ -43,6 +45,7 @@ const ImageViewer = ({
               invertOnDark ? "dark:filter dark:invert" : ""
             )}
             fill
+            sizes="90vw"
           />
         </div>
       </DialogContent>
