@@ -8,7 +8,7 @@ const AdminSettingPage = async () => {
 
   const refetchSetting = async () => {
     "use server";
-    revalidateTag("setting");
+    revalidateTag("settings");
   };
 
   return (
