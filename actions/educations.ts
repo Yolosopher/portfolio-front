@@ -16,7 +16,7 @@ export const fetchSingleEducation = async (id: string) => {
   const res = await fetch(`${CONFIG.backend_url}/education/${id}`, {
     next: {
       revalidate: 0,
-      tags: ["education", id],
+      tags: ["education" + id],
     },
   });
   return await res.json();

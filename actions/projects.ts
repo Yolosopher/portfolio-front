@@ -16,7 +16,7 @@ export const fetchSingleProject = async (id: string) => {
   const res = await fetch(`${CONFIG.backend_url}/project/${id}`, {
     next: {
       revalidate: 0,
-      tags: ["project", id],
+      tags: ["project" + id],
     },
   });
   return await res.json();
