@@ -5,12 +5,10 @@ import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
-import Metrics from "@/components/metrics/Metrics";
+import { GoogleTagManager } from "@next/third-parties/google";
+import CONFIG from "@/config";
+
 const fullName = "Nika Nishnianidze (Yolosopher)";
-<meta
-  name="description"
-  content="Explore the portfolio of Nika Nishnianidze (Yolosopher), an experienced web developer specializing in creating stunning, responsive websites. View projects, skills, and contact information."
-/>;
 
 const md = {
   title: "Yolosopher - Portfolio",
@@ -65,6 +63,7 @@ export default async function RootLayout({
   const { data } = await fetchSettings();
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={CONFIG.google_tag_id} />
       <body className={cn(dmSans.className, "bg-background")}>
         <ThemeProvider
           attribute="class"
@@ -74,7 +73,8 @@ export default async function RootLayout({
           <LayoutInner settings={data}>{children}</LayoutInner>
         </ThemeProvider>
         {/* metrics */}
-        <Metrics />
+
+        {/* <Metrics /> */}
       </body>
     </html>
   );
