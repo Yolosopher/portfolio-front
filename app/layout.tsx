@@ -5,10 +5,7 @@ import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
-import Script from "next/script";
-import clarityScriptContent from "@/config/clarity";
-import MicrosoftClarity from "@/components/metrics/clarity/MicrosoftClarity";
-
+import Metrics from "@/components/metrics/Metrics";
 const fullName = "Nika Nishnianidze (Yolosopher)";
 <meta
   name="description"
@@ -77,7 +74,7 @@ export default async function RootLayout({
           <LayoutInner settings={data}>{children}</LayoutInner>
         </ThemeProvider>
         {/* metrics */}
-        <MicrosoftClarity />
+        <Metrics />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import clarityScriptContent from "@/config/clarity";
 import Script from "next/script";
+
 const MicrosoftClarity = () => {
   return (
     <Script

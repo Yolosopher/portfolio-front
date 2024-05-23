@@ -4,7 +4,9 @@ const CONFIG = {
 
   img_store_key: process.env.NEXT_PUBLIC_IMG_STORE_API_KEY!,
   img_store_origin: process.env.NEXT_PUBLIC_IMG_STORE_ORIGIN!,
+
   microsfot_clarity_id: process.env.NEXT_PUBLIC_MICROSOFT_CLARITY!,
+  google_tag_id: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID!,
 };
 
 export default CONFIG;
