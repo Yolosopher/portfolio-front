@@ -30,6 +30,10 @@ const Hero = ({ settings }: { settings: ISetting }) => {
             width={304}
             height={432}
             priority
+            style={{
+              width: "auto",
+              height: "auto",
+            }}
           />
         </div>
       </article>
