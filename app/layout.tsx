@@ -74,6 +74,14 @@ export default async function RootLayout({
         </ThemeProvider>
         {/* metrics */}
 
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${CONFIG.google_tag_id}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         {/* <Metrics /> */}
       </body>
     </html>
