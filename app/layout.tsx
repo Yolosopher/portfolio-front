@@ -5,8 +5,8 @@ import LayoutInner from "./LayoutInner";
 import { cn } from "@/lib/utils";
 import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
-import { GoogleTagManager } from "@next/third-parties/google";
 import CONFIG from "@/config";
+import Metrics from "@/components/metrics/Metrics";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
 
@@ -63,7 +63,6 @@ export default async function RootLayout({
   const { data } = await fetchSettings();
   return (
     <html lang="en">
-      <GoogleTagManager gtmId={CONFIG.google_tag_id} />
       <body className={cn(dmSans.className, "bg-background")}>
         <ThemeProvider
           attribute="class"
@@ -74,15 +73,7 @@ export default async function RootLayout({
         </ThemeProvider>
         {/* metrics */}
 
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${CONFIG.google_tag_id}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-        {/* <Metrics /> */}
+        <Metrics />
       </body>
     </html>
   );

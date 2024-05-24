@@ -12,3 +12,10 @@ export type SizeInfo = {
   cols: number;
   hiddenNumber: number;
 };
+
+export enum AnalyticsDataType {
+  UNIQUE_VISITORS = "active",
+  PAGE_VIEWS = "pageviews",
+  METRICS = "metrics",
+  STATS = "stats",
+}
