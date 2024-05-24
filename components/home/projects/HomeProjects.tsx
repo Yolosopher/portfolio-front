@@ -10,6 +10,8 @@ import useMediaSize from "@/hooks/media-query/useMediaSize";
 import { useContext, useEffect, useMemo } from "react";
 import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const HomeProjects = ({
   projects,
@@ -71,6 +73,11 @@ const HomeProjects = ({
             active={inView}
             sizeInfo={sizeInfo}
           />
+        </div>
+        <div className="flex items-start justify-center w-full pt-8 pb-3">
+          <Button asChild variant={"default"} size={"lg"}>
+            <Link href="/projects">See All Projects</Link>
+          </Button>
         </div>
       </section>
     </div>

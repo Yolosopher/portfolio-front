@@ -6,6 +6,8 @@ import useMediaSize from "@/hooks/media-query/useMediaSize";
 import { useContext, useEffect, useMemo } from "react";
 import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const HomeTechStack = ({
   techs,
@@ -62,6 +64,11 @@ const HomeTechStack = ({
           ref={ref}
         >
           <TechContent techs={techs} active={inView} sizeInfo={sizeInfo} />
+        </div>
+        <div className="flex items-start justify-center w-full pt-12 pb-3">
+          <Button asChild variant={"default"} size={"lg"}>
+            <Link href="/tech">See All Techs</Link>
+          </Button>
         </div>
       </section>
     </div>
