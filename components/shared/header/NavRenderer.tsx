@@ -14,7 +14,7 @@ const NavRenderer = ({ settings }: { settings: ISetting }) => {
       {isMoreThan1240 ? (
         <>
           <Nav />
-          <Socials settings={settings} />
+          <Socials parentComponentName="Header" settings={settings} />
         </>
       ) : (
         <MobileMenu

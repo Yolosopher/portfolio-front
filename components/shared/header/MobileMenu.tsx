@@ -37,7 +37,7 @@ export function MobileMenu({
         <div className="mb-8"></div>
         <div className="grid gap-8 py-4">
           <Nav vertical cb={closeMenu} />
-          <Socials settings={settings} />
+          <Socials parentComponentName="Burgermenu" settings={settings} />
         </div>
       </SheetContent>
     </Sheet>

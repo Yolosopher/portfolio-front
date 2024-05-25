@@ -45,7 +45,11 @@ const Footer = ({ settings }: { settings: ISetting }) => {
                 {settings.email}
               </a>
               <div className="flex justify-center">
-                <Socials settings={settings} bluish />
+                <Socials
+                  parentComponentName="Footer"
+                  settings={settings}
+                  bluish
+                />
               </div>
             </div>
           </div>
