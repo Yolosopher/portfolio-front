@@ -9,7 +9,6 @@ const CONFIG = {
   google_tag_id: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID!,
 
   umami_website_id: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID!,
-  umami_api_key: process.env.NEXT_PUBLIC_UMAMI_API_KEY!,
   umami_api_endpoint: process.env.NEXT_PUBLIC_UMAMI_API_CLIENT_ENDPOINT!,
 };
 

@@ -7,7 +7,7 @@ const Umami = () => {
   return (
     <Script
       defer
-      src="https://cloud.umami.is/script.js"
+      src={`${CONFIG.umami_api_endpoint}/script.js`}
       data-website-id={CONFIG.umami_website_id}
     />
   );
