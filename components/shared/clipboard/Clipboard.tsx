@@ -10,6 +10,7 @@ type ClipboardProps = {
   noIcon?: boolean;
   iconSize?: number;
   onlyIcon?: boolean;
+  eventName?: string;
 };
 
 const Clipboard = ({
@@ -19,6 +20,7 @@ const Clipboard = ({
   className,
   iconSize,
   onlyIcon,
+  eventName,
 }: ClipboardProps) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(content);
@@ -28,9 +30,12 @@ const Clipboard = ({
       className={cn(
         "inline-flex gap-x-4 gap-y-2 items-center rounded-md px-3 py-2 bg-secondary w-max",
         className,
-        noIcon ? "cursor-pointer" : ""
+        noIcon || onlyIcon ? "cursor-pointer" : ""
       )}
-      {...(noIcon && { onClick: copyToClipboard })}
+      {...((noIcon || onlyIcon) && {
+          onClick: copyToClipboard,
+        } &&
+        eventName && { "data-umami-event": eventName })}
     >
       {!onlyIcon &&
         (maxLength
@@ -40,7 +45,8 @@ const Clipboard = ({
       {!noIcon && (
         <Copy
           {...(iconSize && { size: iconSize })}
-          onClick={copyToClipboard}
+          {...(onlyIcon && { onClick: copyToClipboard } &&
+            eventName && { "data-umami-event": eventName })}
           className="cursor-pointer"
         />
       )}

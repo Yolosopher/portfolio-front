@@ -81,16 +81,20 @@ const ProjectsItem = ({
           <div className="flex items-center justify-between gap-1">
             <Button
               asChild
-              rel="noreferrer"
               variant={"link"}
               className="text-black dark:text-white gap-2 p-0"
             >
-              <a href={preview} target="_blank">
+              <a
+                href={preview}
+                target="_blank"
+                rel="nofollow noreferrer noopener"
+                data-umami-event={`Live preview - ${name}`}
+              >
                 <Link size={16} />
                 <div className="text-base capitalize">live preview</div>
               </a>
             </Button>
-            <ViewGithub link={github} />
+            <ViewGithub link={github} name={name} />
           </div>
         </div>
       </article>

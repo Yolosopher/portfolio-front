@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { useMemo } from "react";
 
-const ViewGithub = ({ link }: { link: string }) => {
+const ViewGithub = ({ link, name }: { link: string; name: string }) => {
   const links = useMemo(() => {
     if (link.includes(", ")) {
       const links = link.split(", ");
@@ -34,12 +34,22 @@ const ViewGithub = ({ link }: { link: string }) => {
         className="flex flex-col gap-0.5 w-36 p-0.5"
       >
         <Button asChild variant={"link"}>
-          <a href={links.backendLink} target="_blank">
+          <a
+            href={links.backendLink}
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            data-umami-event={`Backend Code opened - ${name}`}
+          >
             Backend
           </a>
         </Button>
         <Button asChild variant={"link"}>
-          <a href={links.frontendLink} target="_blank">
+          <a
+            href={links.frontendLink}
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            data-umami-event={`Frontend Code opened - ${name}`}
+          >
             Frontend
           </a>
         </Button>
@@ -51,7 +61,12 @@ const ViewGithub = ({ link }: { link: string }) => {
       variant={"link"}
       className="text-black dark:text-white gap-2 p-0"
     >
-      <a href={link} target="_blank">
+      <a
+        href={link}
+        target="_blank"
+        rel="nofollow noreferrer noopener"
+        data-umami-event={`Frontend Code opened - ${name}`}
+      >
         <Github size={16} />
         <div className="text-base capitalize">view code</div>
       </a>

@@ -39,6 +39,7 @@ const Contact = async () => {
               <a
                 className="font-bold contact-text "
                 href={`mailto:${setting.email}`}
+                data-umami-event={`Email clicked`}
               >
                 {setting.email}
               </a>
@@ -54,6 +55,7 @@ const Contact = async () => {
             className="bg-primary text-primary-foreground"
             onlyIcon
             content={setting.email}
+            eventName={`Email copied`}
             iconSize={20}
           />
         </div>
@@ -63,6 +65,7 @@ const Contact = async () => {
               <a
                 className="font-bold contact-text"
                 href={`tel:+${setting.phone}`}
+                data-umami-event={`Phone clicked`}
               >
                 +{setting.phone}
               </a>
@@ -78,6 +81,7 @@ const Contact = async () => {
             className="bg-primary text-primary-foreground"
             onlyIcon
             iconSize={20}
+            eventName={`Phone copied`}
             content={setting.phone}
           />
         </div>
