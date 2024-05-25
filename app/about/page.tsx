@@ -45,7 +45,7 @@ const About = async () => {
                   href={"/Nika Nishnianidze.pdf"}
                   target="_blank"
                   download
-                  data-umami-events="Download CV"
+                  data-umami-event="Download CV"
                   aria-label="Download CV"
                   className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3"
                 >
