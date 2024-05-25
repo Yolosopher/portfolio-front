@@ -4,11 +4,13 @@ import { fetchSettings } from "@/actions/settings";
 import Education from "@/components/about/education/education";
 import WorkExperience from "@/components/about/work-experience/work-experience";
 import SectionTitle from "@/components/home/section-title/SectionTitle";
+import { Button } from "@/components/ui/button";
 import { poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { IEducation } from "@/models/education";
 import { IExperience } from "@/models/experience";
 import { ISetting } from "@/models/setting";
+import { Download, FileDown } from "lucide-react";
 
 const About = async () => {
   const settingResult = await fetchSettings();
@@ -29,11 +31,31 @@ const About = async () => {
               "text-bluish dark:text-[#CCCCCC] flex flex-col gap-4 sm:gap-7"
             )}
           >
-            <h1 className="font-bold text-3xl sm:text-[2.625rem]">About Me</h1>
+            <div className="relative w-full">
+              <h1 className="font-bold text-3xl sm:text-[2.625rem]">
+                About Me
+              </h1>
+
+              <Button
+                asChild
+                variant={"outline"}
+                className="sm:h-11 sm:rounded-md sm:px-8"
+              >
+                <a
+                  href={"/Nika Nishnianidze.pdf"}
+                  target="_blank"
+                  download
+                  aria-label="Download CV"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3"
+                >
+                  <span>Download CV</span>
+                </a>
+              </Button>
+            </div>
             <div
               className={cn(poppins.className, "text-lg sm:text-lg")}
               dangerouslySetInnerHTML={{ __html: setting.about_me ?? "" }}
-            ></div>
+            />
           </div>
         </section>
         <section>
