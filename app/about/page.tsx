@@ -42,7 +42,7 @@ const About = async () => {
                 className="sm:h-11 sm:rounded-md sm:px-8"
               >
                 <a
-                  href={"/Nika Nishnianidze.pdf"}
+                  href={"/Nika_Nishnianidze.pdf"}
                   target="_blank"
                   download
                   data-umami-event="Download CV"
