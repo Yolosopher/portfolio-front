@@ -22,8 +22,8 @@ const ProjectsContent = ({
         "grid gap-x-4 gap-y-6 xl:gap-x-12 xl:gap-y-16 justify-center justify-items-center origin-left transition w-full duration-700 ease-in",
         `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`,
         active
-          ? "translate-x-0 opacity-100 scale-x-100"
-          : "-translate-x-[15%] opacity-30 scale-x-[.9]"
+          ? "sm:translate-x-0 sm:opacity-100 sm:scale-x-100"
+          : "sm:-translate-x-[15%] sm:opacity-30 sm:scale-x-[.9]"
       )}
     >
       {projects.map((project, i) => (

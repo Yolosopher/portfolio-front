@@ -1,3 +1,4 @@
+"use client";
 import { IProject } from "@/models/project";
 import RenderImage from "../shared/image/RenderImage";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "../ui/hover-card";
+import { useInView } from "react-intersection-observer";
 
 interface ProjectsItemProps extends IProject {
   hidden?: boolean;
@@ -24,15 +26,23 @@ const ProjectsItem = ({
   stack,
   hidden,
 }: ProjectsItemProps) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
   return hidden ? null : (
-    <li className="w-full h-max">
+    <li className="w-full h-max" ref={ref}>
       <article
         className={cn(
           "w-full min-h-[41.375rem] flex flex-col rounded-[1.25rem] bg-nighty overflow-hidden",
-          "shadow-[0_2px_100px_hsl(var(--primary)/0.5)] dark:shadow-[0_2px_100px_hsl(var(--primary)/0.2)]"
+          "shadow-[0_2px_100px_hsl(var(--primary)/0.5)] dark:shadow-[0_2px_100px_hsl(var(--primary)/0.2)]",
+          "duration-700 transition-opacity sm:!opacity-100",
+          inView ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="w-full h-[16.25rem] relative">
+        <div className={cn("w-full h-[16.25rem] relative")}>
           <RenderImage
             name={image}
             alt={name}
