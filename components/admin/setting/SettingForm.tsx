@@ -23,7 +23,6 @@ type SettingFormProps = {
   setting: ISetting;
   refetch: () => void | Promise<void>;
 };
-
 const SettingForm = ({ refetch, setting }: SettingFormProps) => {
   const request = useApiRequest();
   const errorHandler = useErrorHandler();
@@ -114,122 +113,6 @@ const SettingForm = ({ refetch, setting }: SettingFormProps) => {
     }
   };
 
-  const RenderPageContent = () => {
-    return (
-      <>
-        <AdminTextArea
-          value={introText}
-          onChange={(e) => setIntroText(e.target.value)}
-          disabled={loading}
-          label="Into Text"
-          placeholder="type into text here..."
-          cols={100}
-          className="min-h-36"
-        />
-        <ImageStore
-          className="w-1/2 mx-auto"
-          currentImageClassName="w-full"
-          choosenImageName={image}
-          setChoosenImageName={setImage}
-        />
-      </>
-    );
-  };
-  const RenderSocMediaContent = () => {
-    return (
-      <>
-        <AdminInput
-          value={github}
-          type="url"
-          onChange={(e) => setGithub(e.target.value)}
-          disabled={loading}
-          label="Github"
-          placeholder="Github URL"
-        />
-        <AdminInput
-          value={linkedin}
-          type="url"
-          onChange={(e) => setLinkedin(e.target.value)}
-          disabled={loading}
-          label="Linkedin"
-          placeholder="Linkedin URL"
-        />
-        <AdminInput
-          value={twitter}
-          type="url"
-          onChange={(e) => setTwitter(e.target.value)}
-          disabled={loading}
-          label="Twitter"
-          placeholder="Twitter URL"
-        />
-        <AdminInput
-          value={facebook}
-          type="url"
-          onChange={(e) => setFacebook(e.target.value)}
-          disabled={loading}
-          label="Facebook"
-          placeholder="Facebook URL"
-        />
-        <AdminInput
-          value={instagram}
-          type="url"
-          onChange={(e) => setInstagram(e.target.value)}
-          disabled={loading}
-          label="Instagram"
-          placeholder="Instagram URL"
-        />
-        <AdminInput
-          value={youtube}
-          type="url"
-          onChange={(e) => setYoutube(e.target.value)}
-          disabled={loading}
-          label="Youtube"
-          placeholder="Youtube URL"
-        />
-      </>
-    );
-  };
-  const RenderPersonalInfoContent = () => {
-    return (
-      <>
-        {" "}
-        <AdminInput
-          value={email}
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={loading}
-          label="Email"
-          placeholder="Email"
-        />
-        <AdminInput
-          value={phone}
-          type="tel"
-          onChange={(e) => setPhone(e.target.value)}
-          disabled={loading}
-          label="Phone"
-          placeholder="Phone"
-        />
-        <AdminInput
-          value={address}
-          type="text"
-          onChange={(e) => setAddress(e.target.value)}
-          disabled={loading}
-          label="Address"
-          placeholder="Address"
-        />
-        <AdminTextArea
-          value={aboutMe}
-          onChange={(e) => setAboutMe(e.target.value)}
-          disabled={loading}
-          label="About Me"
-          placeholder="About Me"
-          cols={100}
-          className="min-h-36"
-        />
-      </>
-    );
-  };
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -263,7 +146,21 @@ const SettingForm = ({ refetch, setting }: SettingFormProps) => {
             </h2>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-2 w-full px-2">
-            <RenderPageContent />
+            <AdminTextArea
+              value={introText}
+              onChange={(e) => setIntroText(e.target.value)}
+              disabled={loading}
+              label="Into Text"
+              placeholder="type into text here..."
+              cols={100}
+              className="min-h-36"
+            />
+            <ImageStore
+              className="w-1/2 mx-auto"
+              currentImageClassName="w-full"
+              choosenImageName={image}
+              setChoosenImageName={setImage}
+            />
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -281,7 +178,54 @@ const SettingForm = ({ refetch, setting }: SettingFormProps) => {
             </h2>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-2 w-full px-2">
-            <RenderSocMediaContent />
+            <AdminInput
+              value={github}
+              type="url"
+              onChange={(e) => setGithub(e.target.value)}
+              disabled={loading}
+              label="Github"
+              placeholder="Github URL"
+            />
+            <AdminInput
+              value={linkedin}
+              type="url"
+              onChange={(e) => setLinkedin(e.target.value)}
+              disabled={loading}
+              label="Linkedin"
+              placeholder="Linkedin URL"
+            />
+            <AdminInput
+              value={twitter}
+              type="url"
+              onChange={(e) => setTwitter(e.target.value)}
+              disabled={loading}
+              label="Twitter"
+              placeholder="Twitter URL"
+            />
+            <AdminInput
+              value={facebook}
+              type="url"
+              onChange={(e) => setFacebook(e.target.value)}
+              disabled={loading}
+              label="Facebook"
+              placeholder="Facebook URL"
+            />
+            <AdminInput
+              value={instagram}
+              type="url"
+              onChange={(e) => setInstagram(e.target.value)}
+              disabled={loading}
+              label="Instagram"
+              placeholder="Instagram URL"
+            />
+            <AdminInput
+              value={youtube}
+              type="url"
+              onChange={(e) => setYoutube(e.target.value)}
+              disabled={loading}
+              label="Youtube"
+              placeholder="Youtube URL"
+            />
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -299,7 +243,39 @@ const SettingForm = ({ refetch, setting }: SettingFormProps) => {
             </h2>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-2 w-full px-2">
-            <RenderPersonalInfoContent />
+            <AdminInput
+              value={email}
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+              label="Email"
+              placeholder="Email"
+            />
+            <AdminInput
+              value={phone}
+              type="tel"
+              onChange={(e) => setPhone(e.target.value)}
+              disabled={loading}
+              label="Phone"
+              placeholder="Phone"
+            />
+            <AdminInput
+              value={address}
+              type="text"
+              onChange={(e) => setAddress(e.target.value)}
+              disabled={loading}
+              label="Address"
+              placeholder="Address"
+            />
+            <AdminTextArea
+              value={aboutMe}
+              onChange={(e) => setAboutMe(e.target.value)}
+              disabled={loading}
+              label="About Me"
+              placeholder="About Me"
+              cols={100}
+              className="min-h-36"
+            />
           </AccordionContent>
         </AccordionItem>
       </Accordion>
