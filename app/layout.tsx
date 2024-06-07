@@ -7,6 +7,7 @@ import { fetchSettings } from "@/actions/settings";
 import { dmSans } from "@/lib/fonts";
 import CONFIG from "@/config";
 import Metrics from "@/components/metrics/Metrics";
+import AnimatedCursor from "react-animated-cursor";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
 
@@ -64,6 +65,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={cn(dmSans.className, "bg-background")}>
+        {/* <AnimatedCursor color="109, 40, 217" innerSize={13} outerSize={20} /> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

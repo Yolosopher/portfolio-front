@@ -1,0 +1,123 @@
+$w1: 8px;
+$w2: 4px;
+$w3: 8px;
+$w4: 16px;
+
+$shadow-spread: 100px;
+$shadow-position-length: 50px;
+
+.hero-image-box {
+  // borders
+  --hib-left-w: #{$w1};
+  --hib-right-w: #{$w1};
+  --hib-top-w: #{$w1};
+  --hib-bottom-w: #{$w1};
+
+  // shadow directions
+  --hib-shadow-x: 0px;
+  --hib-shadow-y: 0px;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    // border-radius: 4px;
+
+    border-color: hsl(var(--primary));
+    z-index: 1;
+
+    border-style: solid;
+    transition: 500ms ease-out;
+  }
+
+  &::after {
+    border-left-width: var(--hib-left-w);
+    border-right-width: var(--hib-right-w);
+    border-bottom-width: var(--hib-bottom-w);
+    transition-property: border-width;
+  }
+
+  &::before {
+    border-top-width: var(--hib-top-w);
+    z-index: -1;
+    transition-property: border-width box-shadow;
+    box-shadow: hsl(var(--primary)) var(--hib-shadow-x) var(--hib-shadow-y) #{$shadow-spread} -12px;
+  }
+
+  @media (pointer: fine) {
+    /* Rules for devices with mouse here */
+    &.hero-image-box-horizontal {
+      &-left {
+        --hib-shadow-x: #{$shadow-position-length};
+        --hib-right-w: #{$w4};
+        --hib-left-w: #{$w1};
+      }
+      &-right {
+        --hib-shadow-x: -#{$shadow-position-length};
+        --hib-right-w: #{$w1};
+        --hib-left-w: #{$w4};
+      }
+      &-middle {
+        --hib-shadow-x: 0;
+        --hib-right-w: #{$w4};
+        --hib-left-w: #{$w4};
+      }
+    }
+
+    &.hero-image-box-vertical {
+      &-top {
+        --hib-shadow-y: #{$shadow-position-length};
+        --hib-top-w: #{$w1};
+        --hib-bottom-w: #{$w4};
+      }
+      &-bottom {
+        --hib-shadow-y: -#{$shadow-position-length};
+        --hib-top-w: #{$w4};
+        --hib-bottom-w: #{$w1};
+      }
+      &-middle {
+        --hib-shadow-y: 0;
+        --hib-top-w: #{$w4};
+        --hib-bottom-w: #{$w4};
+      }
+    }
+  }
+}
+
+@keyframes hero-image-box {
+  0% {
+    border-bottom-width: $w1;
+    border-right-width: $w2;
+    border-top-width: $w3;
+    border-left-width: $w4;
+  }
+  25% {
+    border-bottom-width: $w2;
+    border-right-width: $w3;
+    border-top-width: $w4;
+    border-left-width: $w1;
+  }
+  50% {
+    border-bottom-width: $w3;
+    border-right-width: $w4;
+    border-top-width: $w1;
+    border-left-width: $w2;
+  }
+  75% {
+    border-bottom-width: $w4;
+    border-right-width: $w1;
+    border-top-width: $w2;
+    border-left-width: $w3;
+  }
+  100% {
+    border-bottom-width: $w1;
+    border-right-width: $w2;
+    border-top-width: $w3;
+    border-left-width: $w4;
+  }
+}
