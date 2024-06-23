@@ -75,7 +75,7 @@ const HomeProjects = ({
           />
         </div>
         <div className="flex items-start justify-center w-full pt-8 pb-3">
-          <Button asChild variant={"default"} size={"lg"}>
+          <Button asChild variant={"shine"} size={"lg"}>
             <Link href="/projects">See All Projects</Link>
           </Button>
         </div>

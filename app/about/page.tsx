@@ -31,15 +31,15 @@ const About = async () => {
               "text-bluish dark:text-[#CCCCCC] flex flex-col gap-4 sm:gap-7"
             )}
           >
-            <div className="relative w-full">
+            <div className="relative w-full ">
               <h1 className="font-bold text-3xl sm:text-[2.625rem]">
                 About Me
               </h1>
 
               <Button
                 asChild
-                variant={"outline"}
-                className="sm:h-11 sm:rounded-md sm:px-8"
+                variant={"shine"}
+                className="top-0 sm:h-11 sm:rounded-md sm:px-7"
               >
                 <a
                   href={"/Nika_Nishnianidze.pdf"}
@@ -49,6 +49,7 @@ const About = async () => {
                   aria-label="Download CV"
                   className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3"
                 >
+                  <Download size={18} />
                   <span>Download CV</span>
                 </a>
               </Button>

@@ -67,7 +67,9 @@ const AdminLogin = () => {
         <Input name="email" type="email" placeholder="example@example.com" />
         <Input name="password" type="password" placeholder="********" />
 
-        <Button type="submit">Login</Button>
+        <Button variant={"shine"} type="submit">
+          Login
+        </Button>
         <Link href={"/"} className="w-max underline mx-auto">
           Go to homepage
         </Link>

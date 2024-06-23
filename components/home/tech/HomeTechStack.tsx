@@ -66,7 +66,7 @@ const HomeTechStack = ({
           <TechContent techs={techs} active={inView} sizeInfo={sizeInfo} />
         </div>
         <div className="flex items-start justify-center w-full pt-12 pb-3">
-          <Button asChild variant={"default"} size={"lg"}>
+          <Button asChild variant={"shine"} size={"lg"}>
             <Link href="/tech">See All Techs</Link>
           </Button>
         </div>
