@@ -24,6 +24,7 @@ const TechContent = ({ techs, active, sizeInfo }: TechContentProps) => {
         <TechItem
           key={tech._id}
           {...tech}
+          showRange
           hidden={i + 1 >= sizeInfo.hiddenNumber}
         />
       ))}

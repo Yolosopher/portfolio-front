@@ -26,7 +26,7 @@ const Tech = async () => {
           )}
         >
           {techs.map((tech, i) => (
-            <TechItem key={tech._id} {...tech} />
+            <TechItem key={tech._id} {...tech} showRange />
           ))}
         </ul>
       </div>

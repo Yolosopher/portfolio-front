@@ -1,17 +1,18 @@
 import { ITechStack } from "@/models/tech";
 import RenderImage from "../shared/image/RenderImage";
 import { cn } from "@/lib/utils";
-import { HoverCard, HoverCardTrigger } from "../ui/hover-card";
-import { HoverCardContent } from "@radix-ui/react-hover-card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { useEffect, useState } from "react";
+import ShowLevel from "./ShowLevel";
 
 interface TechItemProps extends ITechStack {
   hidden?: boolean;
+  showRange?: boolean;
 }
 const TechItem = ({
   _id,
@@ -20,13 +21,15 @@ const TechItem = ({
   name,
   level,
   hidden,
+  showRange,
 }: TechItemProps) => {
   const invertOnDark = description && description.includes("invert");
+
   return hidden ? null : (
     <li className="max-w-[7.5rem] w-full aspect-square flex justify-center items-center">
       <TooltipProvider delayDuration={300}>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger className="flex flex-col gap-2">
             <RenderImage
               name={icon}
               alt={name}
@@ -37,6 +40,7 @@ const TechItem = ({
                 invertOnDark ? "dark:filter dark:invert" : ""
               )}
             />
+            {showRange && <ShowLevel level={level} max={10} />}
           </TooltipTrigger>
           <TooltipContent>
             <p className="text-base select-auto capitalize">{name}</p>
