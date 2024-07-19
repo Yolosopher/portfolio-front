@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import { useEffect, useState } from "react";
-import ShowLevel from "./ShowLevel";
+import ShowLevelAndName from "./ShowLevelAndName";
 
 interface TechItemProps extends ITechStack {
   hidden?: boolean;
@@ -40,7 +40,9 @@ const TechItem = ({
                 invertOnDark ? "dark:filter dark:invert" : ""
               )}
             />
-            {showRange && <ShowLevel level={level} max={10} />}
+            {showRange && (
+              <ShowLevelAndName name={name} level={level} max={10} />
+            )}
           </TooltipTrigger>
           <TooltipContent>
             <p className="text-base select-auto capitalize">{name}</p>
