@@ -33,6 +33,10 @@ const projectHeads = [
     value: "stack",
   },
   {
+    label: "Priority",
+    value: "priority",
+  },
+  {
     label: "Description",
     value: "description",
   },

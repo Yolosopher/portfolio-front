@@ -9,6 +9,7 @@ export interface IProject {
   preview: string;
   image: string;
   group: string;
+  priority: number;
 }
 
 export interface IProjectPopulated extends Omit<IProject, "stack"> {

@@ -14,6 +14,7 @@ import { IProject } from "@/models/project";
 import { MultiSelect, OptionType } from "../multi-select/MultiSelect";
 import { ITechStack } from "@/models/tech";
 import AdminTextArea from "../input/AdminTextArea";
+import RangeInput from "@/components/shared/input/RangeInput";
 
 /*
   _id: string;
@@ -52,6 +53,7 @@ const ProjectForm = ({
   const [description, setDescription] = useState<string>("");
   const [github, setGithub] = useState<string>("");
   const [preview, setPreview] = useState<string>("");
+  const [priority, setPriority] = useState<number>(0);
 
   //  select inputs
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
@@ -74,6 +76,7 @@ const ProjectForm = ({
     setGithub(projectData.github || "");
     setPreview(projectData.preview || "");
     setChoosenImageName(projectData.image || "");
+    setPriority(projectData.priority || 0);
     setSelectedValues(
       (projectData?.stack && projectData.stack.map(({ _id }: any) => _id)) || []
     );
@@ -107,6 +110,9 @@ const ProjectForm = ({
       }
       if (preview) {
         payload.preview = preview;
+      }
+      if (priority) {
+        payload.priority = priority;
       }
       if (group) {
         payload.group = group;
@@ -149,6 +155,16 @@ const ProjectForm = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Type name here..."
+        />
+        <RangeInput
+          disabled={loading}
+          label="Priority"
+          value={priority}
+          min={-20}
+          max={20}
+          step={1}
+          setChange={(val: number) => setPriority(val)}
+          className="w-full"
         />
         <AdminTextArea
           disabled={loading}
