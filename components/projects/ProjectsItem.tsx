@@ -55,7 +55,7 @@ const ProjectsItem = ({
         <div className="px-6 py-5 flex-1 flex flex-col">
           <HoverCard>
             <HoverCardTrigger asChild>
-              <h3 className="text-center w-full font-medium text-bluish flex-1 dark:text-shd text-[1.75rem] mb-[.625rem] capitalize leading-[42px] flex justify-center select-none">
+              <h3 className="text-center w-full font-medium text-bluish dark:text-shd text-[1.75rem] mb-[.625rem] capitalize leading-[42px] h-[84px] flex justify-center select-none">
                 <span className="line-clamp-2 overflow-hidden">{name}</span>
               </h3>
             </HoverCardTrigger>
@@ -65,7 +65,7 @@ const ProjectsItem = ({
           </HoverCard>
           <HoverCard>
             <HoverCardTrigger asChild>
-              <p className="text-base line-clamp-5 mb-3 select-none text-gr dark:text-shd">
+              <p className="text-base line-clamp-5 mb-3 select-none text-gr dark:text-shd flex-1">
                 {description}
               </p>
             </HoverCardTrigger>
