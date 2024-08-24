@@ -6,27 +6,27 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://yolosopher.online/</loc>
+  <loc>https://yolosopher.site/</loc>
   <lastmod>2024-05-22T23:02:40+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://yolosopher.online/about</loc>
+  <loc>https://yolosopher.site/about</loc>
   <lastmod>2024-05-22T23:02:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://yolosopher.online/tech</loc>
+  <loc>https://yolosopher.site/tech</loc>
   <lastmod>2024-05-22T23:02:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://yolosopher.online/projects</loc>
+  <loc>https://yolosopher.site/projects</loc>
   <lastmod>2024-05-22T23:02:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://yolosopher.online/contact</loc>
+  <loc>https://yolosopher.site/contact</loc>
   <lastmod>2024-05-22T23:02:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>

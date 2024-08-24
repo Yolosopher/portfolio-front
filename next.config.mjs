@@ -4,9 +4,6 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: "img-store-api.yolosopher.online",
-            },
-            {
                 hostname: "img-store-api.yolosopher.site",
             },
         ],
