@@ -29,7 +29,6 @@ interface RenderTableProps<T> {
     links?: string[];
     name?: string;
     dateKeys?: string | string[];
-    hidden?: boolean;
 }
 
 const RenderTable = <T,>({
@@ -40,7 +39,6 @@ const RenderTable = <T,>({
     heads,
     rows,
     name,
-    hidden,
 }: RenderTableProps<T>) => {
     const memoidActions = useMemo(
         () => (actions && actions.size > 0 ? [...actions] : null),
