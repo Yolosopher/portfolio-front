@@ -8,17 +8,17 @@ import HomeTechStack from "@/components/home/tech/HomeTechStack";
 import { InViewProvider } from "@/context/inViewContext";
 
 export default async function Home() {
-  const settings = await fetchSettings();
-  const techs = await fetchTechs();
-  const projects = await fetchProjects();
-  return (
-    <InViewProvider>
-      {/* content */}
-      <Hero settings={settings.data} />
-      <HomeTechStack techs={techs.data} />
-      <HomeProjects projects={projects.data} />
-      {/* scroller */}
-      <ScrollToSection />
-    </InViewProvider>
-  );
+    const settings = await fetchSettings();
+    const techs = await fetchTechs();
+    const projects = await fetchProjects("false");
+    return (
+        <InViewProvider>
+            {/* content */}
+            <Hero settings={settings.data} />
+            <HomeTechStack techs={techs.data} />
+            <HomeProjects projects={projects.data} />
+            {/* scroller */}
+            <ScrollToSection />
+        </InViewProvider>
+    );
 }
