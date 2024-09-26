@@ -99,7 +99,7 @@ const NewTranslation = ({ refetch }: NewTranslationProps) => {
                         }}
                         form={formId}
                         disabled={loading}
-                        placeholder="Type key..."
+                        placeholder={t("TYPE_KEY")}
                         ref={keywordRef}
                     />
                 </div>
@@ -114,7 +114,7 @@ const NewTranslation = ({ refetch }: NewTranslationProps) => {
                             setEnValue(e.target.value);
                         }}
                         form={formId}
-                        placeholder="Type English value..."
+                        placeholder={t("TYPE_EN_VALUE")}
                     />
                 </div>
             </TableCell>
@@ -127,7 +127,7 @@ const NewTranslation = ({ refetch }: NewTranslationProps) => {
                     onChange={(e) => {
                         setKaValue(e.target.value);
                     }}
-                    placeholder="Type Georgian value..."
+                    placeholder={t("TYPE_KA_VALUE")}
                 />
             </TableCell>
             <TableCell>

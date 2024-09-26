@@ -4,8 +4,10 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import Socials from "../soc-icons/Socials";
 import Nav from "../header/Nav";
+import { useServerT } from "@/actions/helperTranslation";
 
 const Footer = ({ settings }: { settings: ISetting }) => {
+    const { t } = useServerT();
     return (
         <>
             <footer className="bg-background py-2">
@@ -71,7 +73,7 @@ const Footer = ({ settings }: { settings: ISetting }) => {
                             <span className="block sm:inline text-bluish dark:text-primary font-bold">
                                 Yolosopher.
                             </span>{" "}
-                            All rights reserved.
+                            {t("ALL_RIGHTS_RESERVED")}
                         </div>
                     </div>
                     {/* space */}

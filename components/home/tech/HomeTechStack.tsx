@@ -9,6 +9,7 @@ import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
+import { useServerT } from "@/actions/helperTranslation";
 
 const HomeTechStack = ({
     techs,
@@ -16,6 +17,7 @@ const HomeTechStack = ({
 }: Omit<TechContentProps, "active" | "sizeInfo"> & {
     separate?: boolean;
 }) => {
+    const { t } = useServerT();
     const { updateViewInfo } = useContext(inViewContext);
     const mediaSize = useMediaSize();
 
@@ -57,8 +59,12 @@ const HomeTechStack = ({
             <section className="container pt-8 pb-44">
                 <SectionTitle
                     scrollLink={homeScrollIds.techStack}
-                    title="Tech Stack"
-                    description="Technologies I've been working with recently"
+                    title={t("TECH_STACK")}
+                    description={
+                        <span className="text-center">
+                            {t("TECHS_I_VE_BEEN_WORKING_ON")}
+                        </span>
+                    }
                 />
                 <div
                     className="flex justify-end w-full min-h-[340px] overflow-visible"
@@ -72,7 +78,7 @@ const HomeTechStack = ({
                 </div>
                 <div className="flex items-start justify-center w-full pt-12 pb-3">
                     <Button asChild variant={"shine"} size={"lg"}>
-                        <Link href="/tech">See All Techs</Link>
+                        <Link href="/tech">{t("SEE_ALL_TECHS")}</Link>
                     </Button>
                 </div>
             </section>

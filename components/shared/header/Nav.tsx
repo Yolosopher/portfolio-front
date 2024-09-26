@@ -1,6 +1,7 @@
 import navList from "@/config/nav";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
+import { useServerT } from "@/actions/helperTranslation";
 
 const NavLi = ({
     name,
@@ -13,6 +14,7 @@ const NavLi = ({
     cb?: () => void;
     className?: string;
 }) => {
+    const { t } = useServerT();
     return (
         <li className="capitalize">
             <Link
@@ -23,7 +25,7 @@ const NavLi = ({
                 )}
                 href={path}
             >
-                {name}
+                {t(name)}
             </Link>
         </li>
     );

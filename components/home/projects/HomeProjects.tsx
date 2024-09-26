@@ -12,10 +12,12 @@ import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
+import { useServerT } from "@/actions/helperTranslation";
 
 const HomeProjects = ({
     projects,
 }: Omit<ProjectsContentProps, "active" | "sizeInfo">) => {
+    const { t } = useServerT();
     const { updateViewInfo } = useContext(inViewContext);
     const mediaSize = useMediaSize();
 
@@ -53,15 +55,15 @@ const HomeProjects = ({
 
     return (
         <div className="overflow-hidden section-element">
-            <section className="container pt-8 pb-44">
+            <section className="container pt-8 pb-44 text-center">
                 <SectionTitle
                     scrollLink={homeScrollIds.projects}
-                    title="Projects"
+                    title={t("PROJECTS")}
                     description={
-                        <span>
-                            Some of the things I've build so far{" "}
-                            <span className="text-primary">
-                                (and I can legally share)
+                        <span className="text-center">
+                            {t("LATEST_PROJECTS_I_VE_WORKED_ON")}{" "}
+                            <span className="text-primary block text-center">
+                                ({t("AND_I_CAN_LEGALY_SHARE")})
                             </span>
                         </span>
                     }
@@ -78,7 +80,7 @@ const HomeProjects = ({
                 </div>
                 <div className="flex items-start justify-center w-full pt-8 pb-3">
                     <Button asChild variant={"shine"} size={"lg"}>
-                        <Link href="/projects">See All Projects</Link>
+                        <Link href="/projects">{t("SEE_ALL_PROJECTS")}</Link>
                     </Button>
                 </div>
             </section>

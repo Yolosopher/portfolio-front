@@ -4,15 +4,12 @@ import {
     Table,
     TableBody,
     TableCaption,
-    TableCell,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
 import NewTranslation from "./NewTranslation";
 import RenderTranslationRows from "./RenderTranslationRows";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
 
 type TranslationTableProps = {
     translations: ITranslation["data"];

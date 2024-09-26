@@ -1,22 +1,22 @@
 const navList = [
     {
-        name: "Home",
+        name: "HOME",
         path: "/",
     },
     {
-        name: "Resume",
+        name: "RESUME",
         path: "/resume",
     },
     {
-        name: "Tech Stack",
+        name: "TECH_STACK",
         path: "/tech",
     },
     {
-        name: "Projects",
+        name: "PROJECTS",
         path: "/projects",
     },
     {
-        name: "Contact",
+        name: "CONTACT",
         path: "/contact",
     },
 ];
