@@ -3,7 +3,7 @@ import useApiRequest from "@/hooks/request/useApiRequest";
 import RenderTable from "../table/RenderTable";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import { IProject } from "@/models/project";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { toast } from "@/components/ui/use-toast";
 import { ITechStack } from "@/models/tech";
 import { Eye, EyeOff } from "lucide-react";

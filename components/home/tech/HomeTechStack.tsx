@@ -8,7 +8,7 @@ import { useContext, useEffect, useMemo } from "react";
 import { homeScrollIds } from "@/config/homeScrollIds";
 import { inViewContext } from "@/context/inViewContext";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const HomeTechStack = ({
     techs,

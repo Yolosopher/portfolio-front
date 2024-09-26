@@ -9,6 +9,9 @@ import CONFIG from "@/config";
 import Metrics from "@/components/metrics/Metrics";
 import AnimatedCursor from "react-animated-cursor";
 
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+
 const fullName = "Nika Nishnianidze (Yolosopher)";
 
 const md = {
@@ -58,23 +61,28 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
     children,
+    params: { locale },
 }: Readonly<{
     children: React.ReactNode;
+    params: { locale: string };
 }>) {
+    const messages = await getMessages();
     const { data } = await fetchSettings();
+
     return (
-        <html lang="en">
+        <html lang={locale}>
             <body className={cn(dmSans.className, "bg-background")}>
-                {/* <AnimatedCursor color="109, 40, 217" innerSize={13} outerSize={20} /> */}
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
                     // disableTransitionOnChange
                 >
-                    <LayoutInner settings={data}>{children}</LayoutInner>
+                    {/* <AnimatedCursor color="109, 40, 217" innerSize={13} outerSize={20} /> */}
+                    <LayoutInner messages={messages} settings={data}>
+                        {children}
+                    </LayoutInner>
+                    {/* metrics */}
                 </ThemeProvider>
-                {/* metrics */}
-
                 <Metrics />
             </body>
         </html>
