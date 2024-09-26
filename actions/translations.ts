@@ -1,3 +1,4 @@
+"use server";
 import CONFIG from "@/config";
 
 export const fetchTranslations = async () => {

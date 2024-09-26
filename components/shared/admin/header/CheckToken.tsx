@@ -16,24 +16,21 @@ const CheckToken = () => {
     useEffect(() => {
         const checkTokenRunner = async () => {
             try {
-                console.log("Checking token");
                 const result = await request({
                     url: "/auth/self",
                     auth: true,
                     method: "GET",
                 });
 
-                console.log(result);
-
                 if (result) {
                     if (!result.success) {
                         errorHandler(result.error);
                     } else {
-                        toast({
-                            title: "Success",
-                            description:
-                                result.data.message ?? "Token is valid",
-                        });
+                        // toast({
+                        //     title: "Success",
+                        //     description:
+                        //         result.data.message ?? "Token is valid",
+                        // });
                     }
                 }
             } catch (error: any) {
