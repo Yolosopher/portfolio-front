@@ -1,6 +1,5 @@
 "use client";
 
-import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/context/authContext";
 import AdminHeader from "@/components/shared/admin/header/AdminHeader";
 
@@ -12,7 +11,6 @@ const AdminLayout = ({
     return (
         <AuthProvider>
             <AdminHeader />
-            <Toaster />
             {children}
         </AuthProvider>
     );

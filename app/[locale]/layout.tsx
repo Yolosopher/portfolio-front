@@ -11,6 +11,7 @@ import AnimatedCursor from "react-animated-cursor";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { Toaster } from "@/components/ui/toaster";
 
 const fullName = "Nika Nishnianidze (Yolosopher)";
 
@@ -72,6 +73,7 @@ export default async function RootLayout({
     return (
         <html lang={locale}>
             <body className={cn(dmSans.className, "bg-background")}>
+                <Toaster />
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
