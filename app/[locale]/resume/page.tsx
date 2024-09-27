@@ -12,8 +12,18 @@ import { IExperience } from "@/models/experience";
 import { ISetting } from "@/models/setting";
 import { Cake, Download, FileDown, MapPin } from "lucide-react";
 import {} from "date-fns";
+import { Locales } from "@/types";
+import { getTranslations } from "next-intl/server";
+import { getLocaleKey } from "@/lib/useT";
 
-const About = async () => {
+const About = async ({
+    params: { locale },
+}: {
+    params: { locale: Locales };
+}) => {
+    const translations = await getTranslations("data");
+    const t = (key: string) => translations(getLocaleKey(key, locale));
+
     const settingResult = await fetchSettings();
     const experiencesResult = await fetchExperiences();
     const educationsResult = await fetchEducations();
@@ -56,7 +66,7 @@ const About = async () => {
                     >
                         <div className="relative w-full ">
                             <h2 className="font-bold text-3xl sm:text-[2.625rem]">
-                                About Me
+                                {t("ABOUT_ME")}
                             </h2>
                         </div>
                         <div
@@ -90,7 +100,7 @@ const About = async () => {
                         className=" right-0 top-1/2 -translate-y-1/122 flex items-center gap-3"
                     >
                         <Download size={18} />
-                        <span>Download CV</span>
+                        <span>{t("DOWNLOAD_CV")}</span>
                     </a>
                 </Button>
             </div>
