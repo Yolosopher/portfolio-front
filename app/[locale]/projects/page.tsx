@@ -3,21 +3,31 @@ import { fetchProjects } from "@/actions/projects";
 import SectionTitle from "@/components/home/section-title/SectionTitle";
 import ProjectsItem from "@/components/projects/ProjectsItem";
 import { poppins } from "@/lib/fonts";
+import { getLocaleKey } from "@/lib/useT";
 import { cn } from "@/lib/utils";
 import { IProject } from "@/models/project";
+import { Locales } from "@/types";
+import { getTranslations } from "next-intl/server";
 
-const Projects = async () => {
+const Projects = async ({
+    params: { locale },
+}: {
+    params: { locale: Locales };
+}) => {
+    const translations = await getTranslations("data");
+    const t = (key: string) => translations(getLocaleKey(key, locale));
+
     const result = await fetchProjects("false");
     const projects = result.data as IProject[];
     return (
         <section className="container pt-8 sm:pt-10 lg:pt-16 xl:pt-20 pb-44">
             <SectionTitle
-                title="Projects"
+                title={t("PROJECTS")}
                 description={
                     <span>
-                        Some of the things I've build so far{" "}
+                        {t("LATEST_PROJECTS_I_VE_WORKED_ON")}{" "}
                         <span className="text-primary">
-                            (and I can legally share)
+                            ({t("AND_I_CAN_LEGALY_SHARE")})
                         </span>
                     </span>
                 }

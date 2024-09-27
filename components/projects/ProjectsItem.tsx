@@ -11,6 +11,7 @@ import {
     HoverCardTrigger,
 } from "../ui/hover-card";
 import { useInView } from "react-intersection-observer";
+import useClientT from "@/hooks/client-t/useClientT";
 
 interface ProjectsItemProps extends IProject {
     hidden: boolean;
@@ -26,6 +27,7 @@ const ProjectsItem = ({
     stack,
     hidden,
 }: ProjectsItemProps) => {
+    const { t } = useClientT();
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0.2,
@@ -81,7 +83,7 @@ const ProjectsItem = ({
                     </HoverCard>
                     <div className="mb-4">
                         <h4 className="text-md mb-1 text-bluish dark:text-shd">
-                            Tech stack:
+                            {t("TECH_STACK")}:
                         </h4>
                         <ul className="flex flex-wrap gap-1 select-none">
                             {stack?.map((tech, i) => (
@@ -108,7 +110,7 @@ const ProjectsItem = ({
                             >
                                 <Link size={16} />
                                 <div className="text-base capitalize">
-                                    live preview
+                                    {t("LIVE_PREVIEW")}
                                 </div>
                             </a>
                         </Button>

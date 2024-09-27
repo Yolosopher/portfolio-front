@@ -16,7 +16,7 @@ const NavLi = ({
 }) => {
     const { t } = useServerT();
     return (
-        <li className="capitalize">
+        <li className="capitalize text-[18px]">
             <Link
                 {...(cb ? { onClick: cb } : {})}
                 className={cn(
@@ -45,7 +45,7 @@ const Nav = ({
             <ul
                 className={cn(
                     "flex",
-                    vertical ? "flex-col gap-2" : "items-center gap-[3.125rem]"
+                    vertical ? "flex-col gap-2" : "items-center gap-3"
                 )}
             >
                 {navList.map((nav, index) => (
