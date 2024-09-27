@@ -5,14 +5,13 @@ import AdminInput from "../input/AdminInput";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ITechStack, LEVEL, PRIORITY } from "@/models/tech";
-import RangeInput from "@/shared/input/RangeInput";
 import useApiRequest from "@/hooks/request/useApiRequest";
 import { Loader } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import ImageStore from "../image-store/ImageStore";
-import RenderImage from "@/components/shared/image/RenderImage";
 import AdminTextArea from "../input/AdminTextArea";
+import RangeInput from "@/components/shared/input/RangeInput";
 
 type TechFormProps = {
     techData: ITechStack | null;

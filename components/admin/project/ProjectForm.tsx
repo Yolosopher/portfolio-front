@@ -9,7 +9,6 @@ import { Loader } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import useErrorHandler from "@/hooks/error-handler/useErrorHandler";
 import ImageStore from "../image-store/ImageStore";
-import RenderImage from "@/components/shared/image/RenderImage";
 import { IProject } from "@/models/project";
 import { MultiSelect, OptionType } from "../multi-select/MultiSelect";
 import { ITechStack } from "@/models/tech";
