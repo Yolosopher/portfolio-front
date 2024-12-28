@@ -26,7 +26,7 @@ const TechItem = ({
   const invertOnDark = description && description.includes("invert");
 
   return hidden ? null : (
-    <li className="max-w-[7.5rem] w-full aspect-square flex justify-center items-center">
+    <li className="max-w-[7.5rem] w-full flex justify-center items-center">
       <TooltipProvider delayDuration={300}>
         <Tooltip>
           <TooltipTrigger className="flex flex-col gap-2">
