@@ -11,12 +11,14 @@ type SetEndDateAsCurrentProps = {
   id: string;
   refetch: () => void | Promise<void>;
   disabled: boolean;
+  type: "education" | "experience";
 };
 
 const SetEndDateAsCurrent = ({
   id,
   refetch,
   disabled,
+  type,
 }: SetEndDateAsCurrentProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const request = useApiRequest();
@@ -26,7 +28,10 @@ const SetEndDateAsCurrent = ({
     try {
       setLoading(true);
       const result = await request({
-        url: id ? `/education/${id}` : "/education",
+        url:
+          type === "education"
+            ? `/education/${id}`
+            : `/experience/${id}`,
         method: "PATCH",
         auth: true,
       });
@@ -37,7 +42,11 @@ const SetEndDateAsCurrent = ({
         } else {
           toast({
             title: "Success",
-            description: result.data.message ?? "Education added successfully",
+            description:
+              result.data.message ??
+              (type === "education"
+                ? "Education updated successfully"
+                : "Experience updated successfully"),
           });
           refetch();
         }

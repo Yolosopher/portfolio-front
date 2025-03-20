@@ -152,6 +152,7 @@ const EducationForm = ({
                 refetch={refetch}
                 id={id}
                 disabled={loading}
+                type="education"
               />
             </div>
           )}

@@ -186,6 +186,7 @@ const ExperienceForm = ({
                 refetch={refetch}
                 id={id}
                 disabled={loading}
+                type="experience"
               />
             </div>
           )}
