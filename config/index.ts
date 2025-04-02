@@ -1,5 +1,6 @@
 const CONFIG = {
   backend_url: process.env.NEXT_PUBLIC_BACKEND_URL!,
+  cv_url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/cv`,
   allowed_image_extensions: ["jpg", "jpeg", "webp", "png", "gif"],
 
   img_store_key: process.env.NEXT_PUBLIC_IMG_STORE_API_KEY!,

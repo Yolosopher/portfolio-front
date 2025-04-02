@@ -15,6 +15,7 @@ import {} from "date-fns";
 import { Locales } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { getLocaleKey } from "@/lib/useT";
+import CONFIG from "@/config";
 
 const About = async ({
     params: { locale },
@@ -92,7 +93,7 @@ const About = async ({
                     className="top-0 sm:h-11 sm:rounded-md sm:px-7 self-center"
                 >
                     <a
-                        href={"/Nika_Nishnianidze.pdf"}
+                        href={CONFIG.cv_url}
                         target="_blank"
                         download
                         data-umami-event="Download CV"
