@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "img-store-api.yolosopher.site",
+        hostname: "img-store-api.nika-nishnianidze.online",
       },
     ],
   },

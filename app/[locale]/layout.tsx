@@ -23,7 +23,7 @@ const md = {
         apple: "/favicon/apple-touch-icon.png",
         shortcut: "/favicon/apple-touch-icon.png",
     },
-    applicationName: "yolosopher.site",
+    applicationName: "nika-nishnianidze.online",
     creator: fullName,
     keywords: [
         "web developer",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     icons: md.icons,
     applicationName: md.applicationName,
     creator: md.creator,
-    metadataBase: new URL("https://yolosopher.site"),
+    metadataBase: new URL("https://nika-nishnianidze.online"),
     openGraph: {
         title: md.title,
         description: md.description,

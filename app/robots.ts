@@ -1,7 +1,7 @@
 // User-agent: *
 // Disallow: /admin/
 // Allow: /
-// Sitemap: https://yolosopher.site/sitemap.xml
+// Sitemap: https://nika-nishnianidze.online/sitemap.xml
 
 import { MetadataRoute } from "next";
 
