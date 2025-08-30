@@ -19,6 +19,7 @@ const LayoutInner = ({
     return (
         <>
             <MessagePopup
+                uniqueId="not-fully-translated"
                 variant="destructive"
                 title="Hi, visitor!"
                 description={
