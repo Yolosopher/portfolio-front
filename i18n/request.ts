@@ -1,18 +1,19 @@
-import { notFound } from "next/navigation";
+import { fetchTranslations } from "@/actions/translations";
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
-import { fetchTranslations } from "@/actions/translations";
 
-export default getRequestConfig(async ({ locale }) => {
-    // Validate that the incoming `locale` parameter is valid
-    if (!routing.locales.includes(locale as any)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  let locale = await requestLocale;
+  // Validate that the incoming `locale` parameter is valid
+  if (!locale || !routing.locales.includes(locale as any)) {
+    locale = routing.defaultLocale;
+  }
+  const translations = await fetchTranslations();
 
-    const translations = await fetchTranslations();
-
-    return {
-        messages: {
-            data: translations.data,
-            version: translations.version,
-        },
-    };
+  return {
+    messages: {
+      data: translations.data,
+      version: translations.version,
+    },
+  };
 });
