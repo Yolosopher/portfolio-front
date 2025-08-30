@@ -11,6 +11,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   const translations = await fetchTranslations();
 
   return {
+    locale,
     messages: {
       data: translations.data,
       version: translations.version,
